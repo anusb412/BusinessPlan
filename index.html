@@ -1,1 +1,483 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppLaunch • Micro-Funding 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --primary: 16 185 129; /* emerald-500 */
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+        }
+        
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: rgb(16 185 129);
+            bottom: -8px;
+            left: 0;
+            border-radius: 9999px;
+        }
+        
+        .timeline-item {
+            position: relative;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 23px;
+            top: 40px;
+            bottom: -30px;
+            width: 3px;
+            background: #334155;
+        }
+        
+        .timeline-item:last-child:before {
+            display: none;
+        }
+        
+        .funding-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .funding-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200 font-sans">
+    <!-- NAVBAR -->
+    <nav class="bg-zinc-950 border-b border-zinc-800 fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">📱</div>
+                <div>
+                    <span class="font-bold text-2xl tracking-tighter text-white">AppLaunch</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#summary" class="hover:text-emerald-400 transition-colors">Summary</a>
+                <a href="#products" class="hover:text-emerald-400 transition-colors">Products</a>
+                <a href="#tech" class="hover:text-emerald-400 transition-colors">Tech Stack</a>
+                <a href="#funding" class="hover:text-emerald-400 transition-colors">Funding</a>
+                <a href="#timeline" class="hover:text-emerald-400 transition-colors">Timeline</a>
+            </div>
+            <a href="#contact" 
+               class="bg-white text-zinc-900 px-6 py-2.5 rounded-2xl font-semibold text-sm hover:bg-emerald-400 hover:text-white transition-all flex items-center gap-x-2">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <span>Fund This Launch</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-bg pt-24 pb-20 text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-3xl text-sm font-medium mb-8">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    MICRO-FUNDING OPEN • $200–$500
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-bold tracking-tighter leading-none mb-6">
+                    Launching a <span class="text-emerald-400">Portfolio</span><br>of Practical Android Apps
+                </h1>
+                
+                <p class="text-2xl text-zinc-300 mb-8">
+                    Independent developer seeking micro-funding to publish 2–4 utility apps on Google Play in the next 90 days
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div class="bg-white text-zinc-900 px-8 py-4 rounded-3xl font-semibold text-xl flex items-center gap-x-3">
+                        <i class="fa-solid fa-dollar-sign text-emerald-500"></i>
+                        $200 – $500
+                    </div>
+                    <div class="text-sm text-zinc-400 max-w-[220px] text-left">
+                        Covers hosting, builds, design &amp; marketing<br>
+                        <span class="text-emerald-400 font-medium">100% goes to infrastructure &amp; launch</span>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex flex-wrap gap-6 justify-center">
+                    <div class="text-center">
+                        <div class="stat-number text-5xl font-bold text-emerald-400">6–10</div>
+                        <div class="text-xs tracking-widest uppercase text-zinc-500 mt-1">Apps in Year 1</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="stat-number text-5xl font-bold text-emerald-400">10k+</div>
+                        <div class="text-xs tracking-widest uppercase text-zinc-500 mt-1">Target Installs</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="stat-number text-5xl font-bold text-emerald-400">3</div>
+                        <div class="text-xs tracking-widest uppercase text-zinc-500 mt-1">Months to First Revenue</div>
+                    </div>
+                </div>
+
+                <a href="#funding" 
+                   class="mt-16 inline-flex items-center gap-x-3 bg-emerald-500 hover:bg-emerald-600 transition-all text-white px-10 py-5 rounded-3xl font-semibold text-lg shadow-2xl shadow-emerald-500/30">
+                    <i class="fa-solid fa-rocket"></i>
+                    SUPPORT THE LAUNCH
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 py-20">
+        
+        <!-- FOUNDER -->
+        <div class="flex items-center gap-x-6 mb-16 border-b border-zinc-800 pb-12">
+            <div class="w-20 h-20 bg-zinc-800 rounded-3xl flex items-center justify-center text-5xl">👨‍💻</div>
+            <div>
+                <div class="uppercase text-emerald-400 text-sm tracking-widest font-medium">FOUNDER</div>
+                <div class="text-4xl font-semibold text-white">Anthony</div>
+                <div class="text-zinc-400">Independent Mobile App Developer • Tempe, AZ</div>
+            </div>
+        </div>
+
+        <!-- EXECUTIVE SUMMARY -->
+        <section id="summary" class="mb-24">
+            <h2 class="section-header text-4xl font-semibold mb-8">1. Executive Summary</h2>
+            <div class="prose prose-invert max-w-none text-lg text-zinc-300">
+                <p>This project aims to launch multiple lightweight Android applications on the Google Play Store using modern cross-platform development tools. The goal is to quickly release practical apps that solve niche problems and monetize through ads, premium features, and optional subscriptions.</p>
+                <p>The funding requested will primarily cover infrastructure services, backend hosting, and initial marketing needed to deploy and maintain these apps.</p>
+                <p>By using efficient tools such as Expo and Appwrite, development costs remain extremely low while allowing rapid iteration and scaling. The initial release phase will focus on 2–4 apps within the first 3 months.</p>
+            </div>
+        </section>
+
+        <!-- PRODUCT OVERVIEW -->
+        <section id="products" class="mb-24">
+            <h2 class="section-header text-4xl font-semibold mb-8">2. Product Overview</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-zinc-900 rounded-3xl p-8">
+                    <div class="flex items-center gap-x-4 mb-6">
+                        <i class="fa-solid fa-tree text-3xl text-emerald-400"></i>
+                        <div class="font-semibold text-2xl">Utility &amp; Niche Tools</div>
+                    </div>
+                    <ul class="space-y-4 text-zinc-300">
+                        <li class="flex gap-x-3"><span class="text-emerald-400">•</span> Outdoor recreation utilities (river tracking, water data, etc.)</li>
+                        <li class="flex gap-x-3"><span class="text-emerald-400">•</span> Reward/points aggregators for fast food apps</li>
+                        <li class="flex gap-x-3"><span class="text-emerald-400">•</span> Simple productivity utilities</li>
+                        <li class="flex gap-x-3"><span class="text-emerald-400">•</span> Data aggregation tools</li>
+                    </ul>
+                </div>
+                <div class="bg-zinc-900 rounded-3xl p-8 flex flex-col justify-center">
+                    <p class="text-xl leading-relaxed text-zinc-400">
+                        Each app solves a <span class="text-white font-medium">specific real-world problem</span> with a clean interface and minimal battery usage. 
+                        These categories have strong organic search traffic and very low competition on the Play Store.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEVELOPMENT STRATEGY -->
+        <section id="tech" class="mb-24">
+            <h2 class="section-header text-4xl font-semibold mb-8">3. Development Strategy</h2>
+            <div class="bg-zinc-900 rounded-3xl p-10">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">⚛️</div>
+                        <div class="font-semibold">React Native</div>
+                        <div class="text-xs text-zinc-500 mt-1">Cross-platform</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🚀</div>
+                        <div class="font-semibold">Expo</div>
+                        <div class="text-xs text-zinc-500 mt-1">EAS builds &amp; updates</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">📦</div>
+                        <div class="font-semibold">Appwrite</div>
+                        <div class="text-xs text-zinc-500 mt-1">Backend (auth + DB)</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">📱</div>
+                        <div class="font-semibold">Android Studio</div>
+                        <div class="text-xs text-zinc-500 mt-1">Native debugging</div>
+                    </div>
+                </div>
+                <p class="text-center text-zinc-400 mt-10 max-w-md mx-auto">
+                    This stack keeps monthly infrastructure costs under $50 while enabling weekly updates and instant rollouts.
+                </p>
+            </div>
+        </section>
+
+        <!-- REVENUE MODEL -->
+        <section class="mb-24">
+            <h2 class="section-header text-4xl font-semibold mb-8">4. Revenue Model</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-zinc-900 rounded-3xl p-8 text-center">
+                    <i class="fa-solid fa-ad text-5xl text-sky-400 mb-6"></i>
+                    <div class="text-2xl font-semibold mb-2">Advertising</div>
+                    <div class="text-emerald-400 text-4xl font-bold">$1–$5</div>
+                    <div class="text-xs uppercase tracking-widest text-zinc-500">per 1,000 users / month</div>
+                </div>
+                <div class="bg-zinc-900 rounded-3xl p-8 text-center">
+                    <i class="fa-solid fa-star text-5xl text-amber-400 mb-6"></i>
+                    <div class="text-2xl font-semibold mb-2">Premium Features</div>
+                    <div class="text-sm text-zinc-400">One-time unlocks • Advanced data • Offline mode • Custom alerts</div>
+                </div>
+                <div class="bg-zinc-900 rounded-3xl p-8 text-center">
+                    <i class="fa-solid fa-repeat text-5xl text-purple-400 mb-6"></i>
+                    <div class="text-2xl font-semibold mb-2">Subscriptions</div>
+                    <div class="text-emerald-400 text-4xl font-bold">$1.99 – $3.99</div>
+                    <div class="text-xs uppercase tracking-widest text-zinc-500">monthly tiers</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FUNDING BREAKDOWN -->
+        <section id="funding" class="mb-24">
+            <h2 class="section-header text-4xl font-semibold mb-8">5. Funding Use Breakdown</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="funding-card bg-zinc-900 rounded-3xl p-8 border border-zinc-800">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="uppercase text-xs tracking-widest text-zinc-500">Monthly</div>
+                            <div class="font-semibold text-xl mt-2">Backend Hosting</div>
+                            <div class="text-emerald-400 text-3xl font-bold mt-6">$15–$25</div>
+                        </div>
+                        <div class="text-5xl opacity-20">☁️</div>
+                    </div>
+                    <div class="text-xs text-zinc-500 mt-8">Appwrite Cloud</div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="funding-card bg-zinc-900 rounded-3xl p-8 border border-zinc-800">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="uppercase text-xs tracking-widest text-zinc-500">Monthly</div>
+                            <div class="font-semibold text-xl mt-2">Build Infrastructure</div>
+                            <div class="text-emerald-400 text-3xl font-bold mt-6">$20–$40</div>
+                        </div>
+                        <div class="text-5xl opacity-20">⚡</div>
+                    </div>
+                    <div class="text-xs text-zinc-500 mt-8">Expo EAS builds</div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="funding-card bg-zinc-900 rounded-3xl p-8 border border-zinc-800">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="uppercase text-xs tracking-widest text-zinc-500">One-time</div>
+                            <div class="font-semibold text-xl mt-2">Design &amp; Assets</div>
+                            <div class="text-emerald-400 text-3xl font-bold mt-6">$50–$100</div>
+                        </div>
+                        <div class="text-5xl opacity-20">🎨</div>
+                    </div>
+                    <div class="text-xs text-zinc-500 mt-8">Play Store listings</div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="funding-card bg-zinc-900 rounded-3xl p-8 border border-zinc-800">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="uppercase text-xs tracking-widest text-zinc-500">One-time</div>
+                            <div class="font-semibold text-xl mt-2">Initial Marketing</div>
+                            <div class="text-emerald-400 text-3xl font-bold mt-6">$50–$150</div>
+                        </div>
+                        <div class="text-5xl opacity-20">📣</div>
+                    </div>
+                    <div class="text-xs text-zinc-500 mt-8">Targeted ads + social</div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="funding-card bg-zinc-900 rounded-3xl p-8 border border-zinc-800">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="uppercase text-xs tracking-widest text-zinc-500">One-time</div>
+                            <div class="font-semibold text-xl mt-2">Domain + Landing</div>
+                            <div class="text-emerald-400 text-3xl font-bold mt-6">$10–$15</div>
+                        </div>
+                        <div class="text-5xl opacity-20">🌐</div>
+                    </div>
+                    <div class="text-xs text-zinc-500 mt-8">One year</div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="funding-card bg-zinc-900 rounded-3xl p-8 border border-zinc-800 flex flex-col justify-between">
+                    <div>
+                        <div class="font-semibold text-xl">Contingency Buffer</div>
+                        <div class="text-emerald-400 text-3xl font-bold mt-8">$50–$150</div>
+                    </div>
+                    <div class="mt-auto pt-8 text-xs text-emerald-400 font-medium">Scaling &amp; unexpected needs</div>
+                </div>
+            </div>
+            
+            <!-- TOTAL -->
+            <div class="mt-12 bg-gradient-to-r from-emerald-900/70 to-transparent border border-emerald-500/30 rounded-3xl p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <div class="uppercase text-emerald-400 text-sm font-medium tracking-widest">TOTAL REQUESTED</div>
+                    <div class="text-6xl font-bold text-white mt-3">Minimum: <span class="text-emerald-400">$200</span></div>
+                    <div class="text-6xl font-bold text-white">Ideal: <span class="text-emerald-400">$400–$500</span></div>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm text-zinc-400">First 3–6 months of operations fully covered</div>
+                    <a href="#contact" class="mt-6 inline-block bg-white text-zinc-900 px-8 py-4 rounded-2xl font-semibold hover:scale-105 transition-transform">
+                        Commit Your Support →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- MARKETING -->
+        <section class="mb-24">
+            <h2 class="section-header text-4xl font-semibold mb-8">6. Marketing Strategy</h2>
+            <div class="text-zinc-300 text-lg max-w-2xl">
+                Low-cost, high-ROI channels only:<br>
+                <span class="block mt-6 text-emerald-400 font-medium">• Google Play Store SEO</span>
+                <span class="block mt-2 text-emerald-400 font-medium">• TikTok / YouTube Shorts demos</span>
+                <span class="block mt-2 text-emerald-400 font-medium">• Reddit communities</span>
+                <span class="block mt-2 text-emerald-400 font-medium">• Targeted ads under $0.50 per user</span>
+            </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section id="timeline" class="mb-24">
+            <h2 class="section-header text-4xl font-semibold mb-12">7. Timeline</h2>
+            <div class="space-y-16 max-w-2xl">
+                <!-- Month 1 -->
+                <div class="timeline-item pl-14 relative">
+                    <div class="absolute left-0 top-2 w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">1</div>
+                    <div class="font-semibold text-2xl text-white">Month 1</div>
+                    <ul class="mt-6 space-y-3 text-zinc-300">
+                        <li class="flex items-start gap-x-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Finalize features for first two apps</li>
+                        <li class="flex items-start gap-x-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Deploy Appwrite backend</li>
+                        <li class="flex items-start gap-x-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Prepare Play Store assets &amp; listings</li>
+                    </ul>
+                </div>
+                
+                <!-- Month 2 -->
+                <div class="timeline-item pl-14 relative">
+                    <div class="absolute left-0 top-2 w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">2</div>
+                    <div class="font-semibold text-2xl text-white">Month 2</div>
+                    <ul class="mt-6 space-y-3 text-zinc-300">
+                        <li class="flex items-start gap-x-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Release first two apps</li>
+                        <li class="flex items-start gap-x-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Launch organic marketing</li>
+                    </ul>
+                </div>
+                
+                <!-- Month 3 -->
+                <div class="timeline-item pl-14 relative">
+                    <div class="absolute left-0 top-2 w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-3xl shadow-inner">3</div>
+                    <div class="font-semibold text-2xl text-white">Month 3</div>
+                    <ul class="mt-6 space-y-3 text-zinc-300">
+                        <li class="flex items-start gap-x-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Release next 1–2 apps</li>
+                        <li class="flex items-start gap-x-3"><i class="fa-solid fa-check mt-1 text-emerald-400"></i> Analyze feedback &amp; optimize</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- GROWTH + OUTCOMES -->
+        <div class="grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="section-header text-4xl font-semibold mb-8">8. Growth Strategy</h2>
+                <div class="bg-zinc-900 rounded-3xl p-8">
+                    <ul class="space-y-6">
+                        <li class="flex gap-x-6">
+                            <div class="text-5xl font-bold text-emerald-400">6–10</div>
+                            <div>Apps released in first year</div>
+                        </li>
+                        <li class="flex gap-x-6">
+                            <div class="text-5xl font-bold text-emerald-400">10,000+</div>
+                            <div>Total installs across portfolio</div>
+                        </li>
+                        <li class="flex gap-x-6">
+                            <div class="text-5xl font-bold text-emerald-400">Recurring</div>
+                            <div>Ad + subscription revenue</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <h2 class="section-header text-4xl font-semibold mb-8">10. Expected Outcome</h2>
+                <div class="bg-gradient-to-br from-zinc-900 to-emerald-950 border border-emerald-500/20 rounded-3xl p-10">
+                    <div class="text-emerald-400 font-medium text-sm tracking-widest mb-4">IN 6–12 MONTHS</div>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-x-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Multiple published apps generating revenue</li>
+                        <li class="flex items-center gap-x-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Self-sustaining portfolio</li>
+                        <li class="flex items-center gap-x-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Scalable independent developer business</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- RISK & IMPACT -->
+        <div class="mt-24 bg-zinc-900 rounded-3xl p-12 text-center">
+            <div class="max-w-xl mx-auto">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-2xl mb-6">
+                    <i class="fa-solid fa-shield-halved text-3xl"></i>
+                </div>
+                <h3 class="text-3xl font-semibold mb-6">Why This is Low-Risk &amp; High-Impact</h3>
+                <p class="text-zinc-300 text-lg">
+                    Extremely low monthly costs • Rapid development cycle • Ability to pivot instantly • Even modest downloads cover all expenses within weeks.
+                </p>
+                <div class="mt-10 text-emerald-400 font-medium text-xl">
+                    ✅ A $200–$500 investment can launch multiple revenue-generating apps
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT / CTA -->
+        <section id="contact" class="mt-32 text-center">
+            <div class="max-w-md mx-auto">
+                <h2 class="text-5xl font-semibold tracking-tighter mb-6">Ready to help launch these apps?</h2>
+                <p class="text-zinc-400 mb-10">Perfect for micro-grants, angel micro-investors, or crowdfunding supporters.</p>
+                
+                <a href="mailto:YOUR_EMAIL_HERE@domain.com" 
+                   class="block bg-white text-zinc-950 hover:bg-emerald-400 hover:text-white transition-all text-xl font-semibold py-8 rounded-3xl mb-8">
+                    📧 Email Anthony to Fund
+                </a>
+                
+                <div class="text-xs text-zinc-500">
+                    Replace YOUR_EMAIL_HERE with your actual email before publishing<br>
+                    This page is 100% self-contained and ready for GitHub Pages
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto px-6 text-center text-xs text-zinc-500">
+            <div class="flex justify-center gap-x-8 mb-6">
+                <a href="#" class="hover:text-zinc-300 transition-colors">GitHub Repo</a>
+                <a href="#" class="hover:text-zinc-300 transition-colors">Privacy</a>
+                <a href="#" class="hover:text-zinc-300 transition-colors">Contact</a>
+            </div>
+            <div>Made with ❤️ by Anthony • Mobile App Launch Micro-Funding 2026</div>
+            <div class="mt-4">Hosted on GitHub Pages • Tailwind + Font Awesome</div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already loaded via CDN
+        function initTailwind() {
+            // Any custom config if needed (none here)
+        }
+        window.onload = initTailwind;
+    </script>
+</body>
+</html>
