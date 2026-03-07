@@ -8,38 +8,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
-        
+       
         .hero-bg {
             background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
         }
-        
+       
         .timeline-step {
             transition: all 0.3s ease;
         }
-        
+       
         .timeline-step.active {
             background-color: rgb(16 185 129);
             color: white;
             box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
         }
-        
+       
         .app-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+       
         .app-card:hover {
             transform: translateY(-10px);
         }
-        
+       
         .form-input {
             background: #18181b;
             border: 1px solid #3f3f46;
         }
-        
+       
         .mobile-menu {
             animation: slideDown 0.3s ease forwards;
         }
-        
+       
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -55,7 +55,7 @@
                 <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">📱</div>
                 <span class="font-bold text-2xl tracking-tighter text-white">AppLaunch</span>
             </div>
-            
+           
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
                 <a href="#apps" class="hover:text-emerald-400 transition-colors">Apps</a>
@@ -63,12 +63,11 @@
                 <a href="#testers" class="hover:text-emerald-400 transition-colors">Testers</a>
                 <a href="#privacy" class="hover:text-emerald-400 transition-colors font-medium">Privacy</a>
             </div>
-            
+           
             <!-- Desktop Fund Button -->
-            <a href="#fund" 
+            <a href="#fund"
                class="hidden md:flex bg-white text-zinc-900 px-7 py-3 rounded-2xl font-semibold text-sm hover:bg-emerald-400 hover:text-white transition-all items-center gap-x-2">
-                <i class="fa-solid fa-hand-holding-dollar"></i>
-                Fund Now
+                🚀 Fund the Launch
             </a>
 
             <!-- Hamburger -->
@@ -84,10 +83,9 @@
                 <a href="#funding" class="hover:text-emerald-400 transition-colors py-2">Funding</a>
                 <a href="#testers" class="hover:text-emerald-400 transition-colors py-2">Testers</a>
                 <a href="#privacy" class="hover:text-emerald-400 transition-colors py-2">Privacy</a>
-                <a href="#fund" 
+                <a href="#fund"
                    class="mt-4 bg-white text-zinc-900 px-6 py-4 rounded-2xl font-semibold text-center flex items-center justify-center gap-x-2">
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
-                    Fund My Project
+                    🚀 Fund the Launch
                 </a>
             </div>
         </div>
@@ -107,9 +105,9 @@
                 Paddle-Go &amp; RiverTracker — practical outdoor tools for Android.<br>
                 Built by Anthony • Tempe, AZ
             </p>
-            <a href="#fund" 
-               class="mt-10 inline-block bg-emerald-500 hover:bg-emerald-600 px-10 py-5 rounded-3xl font-semibold text-lg">
-                Support the Launch →
+            <a href="#fund"
+               class="mt-10 inline-block bg-emerald-500 hover:bg-emerald-600 px-10 py-5 rounded-3xl font-semibold text-lg flex items-center gap-x-2 mx-auto">
+                🚀 Fund the Launch
             </a>
         </div>
     </header>
@@ -120,7 +118,7 @@
         <section id="apps" class="mb-24">
             <h2 class="text-4xl font-semibold mb-4 text-center">Apps Currently in Production</h2>
             <p class="text-zinc-400 text-center mb-12">Both use Ads at the bottom + $2.99 Premium data features</p>
-            
+           
             <!-- Paddle-Go -->
             <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
                 <div class="p-8 md:flex gap-10">
@@ -150,7 +148,7 @@
                             💎 Premium data unlocks for $2.99 per spot • Ads at bottom
                         </div>
                     </div>
-                    
+                   
                     <!-- Progress Timeline -->
                     <div class="md:w-1/2 mt-10 md:mt-0">
                         <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-4">DEVELOPMENT PROGRESS</div>
@@ -201,7 +199,7 @@
                             💎 Premium data unlocks for $2.99 • Ads at bottom
                         </div>
                     </div>
-                    
+                   
                     <!-- Progress Timeline -->
                     <div class="md:w-1/2 mt-10 md:mt-0">
                         <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-4">DEVELOPMENT PROGRESS</div>
@@ -265,42 +263,42 @@
             </div>
             <h2 class="text-4xl font-semibold text-center mb-3">Help Test the Apps</h2>
             <p class="text-zinc-400 text-center mb-10">Get early access + your name in the credits. Applications go straight to my email.</p>
-            
+           
             <form action="https://formsubmit.co/anusb412@gmail.com" method="POST" class="bg-zinc-900 rounded-3xl p-8">
                 <input type="hidden" name="_subject" value="New Beta Tester Application - Paddle-Go / RiverTracker">
                 <input type="hidden" name="_captcha" value="false">
-                
+               
                 <div class="space-y-6">
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Full Name</label>
-                        <input type="text" name="name" required 
+                        <input type="text" name="name" required
                                class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500">
                     </div>
-                    
+                   
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Email Address</label>
-                        <input type="email" name="email" required 
+                        <input type="email" name="email" required
                                class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500">
                     </div>
-                    
+                   
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Android Device</label>
-                        <input type="text" name="device" placeholder="e.g. Samsung Galaxy S23, Pixel 8" required 
+                        <input type="text" name="device" placeholder="e.g. Samsung Galaxy S23, Pixel 8" required
                                class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500">
                     </div>
-                    
+                   
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Why do you want to test these apps?</label>
-                        <textarea name="why" rows="4" required placeholder="I'm an avid paddler and want to help..." 
+                        <textarea name="why" rows="4" required placeholder="I'm an avid paddler and want to help..."
                                   class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500 resize-none"></textarea>
                     </div>
                 </div>
-                
+               
                 <button type="submit"
                         class="mt-8 w-full bg-emerald-500 hover:bg-emerald-600 transition-colors text-white font-semibold py-5 rounded-2xl text-lg">
                     Submit Application
                 </button>
-                
+               
                 <p class="text-[10px] text-zinc-500 text-center mt-6">
                     Your info will be emailed directly to Anthony • No spam ever
                 </p>
@@ -325,19 +323,19 @@
             </p>
         </section>
 
-        <!-- BUY ME A COFFEE FUND CTA -->
+        <!-- FUNDING CTA SECTION -->
         <section id="fund" class="mt-24 text-center">
-            <h2 class="text-4xl font-semibold mb-4">Fund My Project</h2>
-            <p class="text-zinc-400 mb-8 max-w-md mx-auto">Help get Paddle-Go &amp; RiverTracker live on the Play Store. Any amount helps — $200–$500 gets both apps launched and earning.</p>
-            
-            <!-- Buy Me a Coffee Button -->
-            <a href="https://buymeacoffee.com/anthonynusbaum" 
+            <h2 class="text-4xl font-semibold mb-4">Fund My Startup</h2>
+            <p class="text-zinc-400 mb-8 max-w-md mx-auto">Help me launch my independent app startup and get Paddle-Go &amp; RiverTracker live on the Play Store ASAP. Any amount gets us closer to revenue!</p>
+           
+            <!-- Buy Me a Coffee Button (still your link) -->
+            <a href="https://buymeacoffee.com/anthonynusbaum"
                target="_blank"
                class="inline-block bg-white hover:bg-emerald-400 text-zinc-950 font-semibold text-2xl py-8 px-16 rounded-3xl shadow-2xl shadow-emerald-500/20 transition-all flex items-center gap-x-3">
-                ☕ Buy Me a Coffee
+                🚀 Fund the Launch
             </a>
-            
-            <p class="text-xs text-zinc-500 mt-8">Buy Me a Coffee is instant &amp; secure • You can send any amount</p>
+           
+            <p class="text-xs text-zinc-500 mt-8">Instant • Secure • Every dollar goes straight to launching the apps</p>
         </section>
     </div>
 
@@ -351,7 +349,7 @@
         // Hamburger Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+       
         hamburger.addEventListener('click', () => {
             if (mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.remove('hidden');
