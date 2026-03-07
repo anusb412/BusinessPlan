@@ -35,29 +35,61 @@
             background: #18181b;
             border: 1px solid #3f3f46;
         }
+        
+        .mobile-menu {
+            animation: slideDown 0.3s ease forwards;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200 font-sans">
     <!-- TOP NAV -->
     <nav class="bg-zinc-950 border-b border-zinc-800 fixed w-full z-50">
         <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <!-- Logo -->
             <div class="flex items-center gap-x-3">
                 <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">📱</div>
                 <span class="font-bold text-2xl tracking-tighter text-white">AppLaunch</span>
             </div>
             
-            <div class="flex items-center gap-x-8 text-sm font-medium">
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
                 <a href="#apps" class="hover:text-emerald-400 transition-colors">Apps</a>
                 <a href="#funding" class="hover:text-emerald-400 transition-colors">Funding</a>
                 <a href="#testers" class="hover:text-emerald-400 transition-colors">Testers</a>
                 <a href="#privacy" class="hover:text-emerald-400 transition-colors font-medium">Privacy</a>
             </div>
             
-            <a href="#contact" 
-               class="bg-white text-zinc-900 px-7 py-3 rounded-2xl font-semibold text-sm hover:bg-emerald-400 hover:text-white transition-all flex items-center gap-x-2">
+            <!-- Desktop Fund Button -->
+            <a href="#fund" 
+               class="hidden md:flex bg-white text-zinc-900 px-7 py-3 rounded-2xl font-semibold text-sm hover:bg-emerald-400 hover:text-white transition-all items-center gap-x-2">
                 <i class="fa-solid fa-hand-holding-dollar"></i>
                 Fund Now
             </a>
+
+            <!-- Hamburger -->
+            <button id="hamburger" class="md:hidden text-3xl text-white">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 mobile-menu">
+            <div class="px-6 py-6 flex flex-col gap-y-5 text-sm font-medium">
+                <a href="#apps" class="hover:text-emerald-400 transition-colors py-2">Apps</a>
+                <a href="#funding" class="hover:text-emerald-400 transition-colors py-2">Funding</a>
+                <a href="#testers" class="hover:text-emerald-400 transition-colors py-2">Testers</a>
+                <a href="#privacy" class="hover:text-emerald-400 transition-colors py-2">Privacy</a>
+                <a href="#fund" 
+                   class="mt-4 bg-white text-zinc-900 px-6 py-4 rounded-2xl font-semibold text-center flex items-center justify-center gap-x-2">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    Fund My Project
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -75,7 +107,7 @@
                 Paddle-Go &amp; RiverTracker — practical outdoor tools for Android.<br>
                 Built by Anthony • Tempe, AZ
             </p>
-            <a href="#funding" 
+            <a href="#fund" 
                class="mt-10 inline-block bg-emerald-500 hover:bg-emerald-600 px-10 py-5 rounded-3xl font-semibold text-lg">
                 Support the Launch →
             </a>
@@ -293,21 +325,51 @@
             </p>
         </section>
 
-        <!-- CTA -->
-        <section id="contact" class="mt-24 text-center">
-            <h2 class="text-4xl font-semibold mb-4">Ready to help these apps launch?</h2>
-            <p class="text-zinc-400 mb-8">Email me and I’ll send you the Play Store links once live</p>
-            <a href="mailto:anusb412@gmail.com" 
-               class="block bg-white hover:bg-emerald-400 text-zinc-950 font-semibold text-xl py-8 rounded-3xl max-w-md mx-auto">
-                📧 Email Anthony to Support
+        <!-- BUY ME A COFFEE FUND CTA -->
+        <section id="fund" class="mt-24 text-center">
+            <h2 class="text-4xl font-semibold mb-4">Fund My Project</h2>
+            <p class="text-zinc-400 mb-8 max-w-md mx-auto">Help get Paddle-Go &amp; RiverTracker live on the Play Store. Any amount helps — $200–$500 gets both apps launched and earning.</p>
+            
+            <!-- Buy Me a Coffee Button -->
+            <a href="https://buymeacoffee.com/anthonynusbaum" 
+               target="_blank"
+               class="inline-block bg-white hover:bg-emerald-400 text-zinc-950 font-semibold text-2xl py-8 px-16 rounded-3xl shadow-2xl shadow-emerald-500/20 transition-all flex items-center gap-x-3">
+                ☕ Buy Me a Coffee
             </a>
+            
+            <p class="text-xs text-zinc-500 mt-8">Buy Me a Coffee is instant &amp; secure • You can send any amount</p>
         </section>
     </div>
 
     <!-- FOOTER -->
     <footer class="bg-black py-12 border-t border-zinc-800 text-center text-xs text-zinc-500">
         <div>Made by Anthony • Tempe, AZ • 2026</div>
+        <div class="mt-2">Hosted on GitHub Pages • Fully mobile responsive</div>
     </footer>
 
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        hamburger.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                hamburger.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            });
+        });
+    </script>
 </body>
 </html>
