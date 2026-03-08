@@ -353,7 +353,7 @@
                     </div>
                 </div>
 
-                <!-- LIVE ADVERTISEMENT VIDEO (NEW) -->
+                <!-- LIVE ADVERTISEMENT LINK (UPDATED) -->
                 <div class="px-8 pb-8 pt-8 border-t border-zinc-800">
                     <div class="flex items-center justify-between mb-6">
                         <div>
@@ -363,15 +363,22 @@
                         <div class="px-4 py-1 bg-teal-500/10 text-teal-400 text-xs font-medium rounded-2xl">NEW</div>
                     </div>
                     
-                    <div class="max-w-[520px] mx-auto rounded-3xl overflow-hidden border border-zinc-700 shadow-2xl bg-black">
-                        <blockquote class="tiktok-embed" 
-                                    cite="https://www.tiktok.com/@jaggedop/video/7614904761309056269" 
-                                    data-video-id="7614904761309056269" 
-                                    style="max-width: 605px; min-width: 325px; width: 100%;">
-                            <section></section>
-                        </blockquote>
+                    <div class="max-w-md mx-auto">
+                        <a href="https://www.tiktok.com/@jaggedop/video/7614904761309056269" 
+                           target="_blank"
+                           class="group flex flex-col items-center justify-center bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-teal-500 rounded-3xl px-8 py-10 text-center transition-all">
+                            <div class="w-16 h-16 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-4xl text-teal-400"></i>
+                            </div>
+                            <div class="font-semibold text-xl text-white">Watch the 14-second Live Ad</div>
+                            <div class="text-zinc-400 mt-1">Official Paddle-Go promo on TikTok</div>
+                            <div class="mt-6 text-xs uppercase tracking-widest bg-black px-5 py-2 rounded-full border border-zinc-700 text-teal-400 flex items-center gap-x-2">
+                                <span>Opens in new tab</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </div>
+                        </a>
                     </div>
-                    <p class="text-center text-[10px] text-zinc-500 mt-4">Official 14-second TikTok ad • Watch how Paddle-Go works in real life</p>
+                    <p class="text-center text-[10px] text-zinc-500 mt-6">Real footage • No autoplay • Click to view</p>
                 </div>
 
                 <!-- SCREENSHOT GALLERY - PADDLE-GO -->
@@ -640,8 +647,5 @@
 
         window.addEventListener('load', enableDragScroll);
     </script>
-
-    <!-- TikTok Embed Script (required for the live ad video) -->
-    <script async src="https://www.tiktok.com/embed.js"></script>
 </body>
 </html>
