@@ -13,16 +13,6 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
         }
         
-        .timeline-step {
-            transition: all 0.3s ease;
-        }
-        
-        .timeline-step.active {
-            background-color: rgb(16 185 129);
-            color: white;
-            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
-        }
-        
         .app-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -45,27 +35,69 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Button fixes */
-        .cta-button {
-            display: inline-flex;
+        /* Vertical Timeline Styles */
+        .vertical-timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+        
+        .vertical-timeline::before {
+            content: '';
+            position: absolute;
+            left: 13px;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background: #334155;
+            border-radius: 9999px;
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        
+        .timeline-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-dot {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            border-radius: 9999px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 10;
             transition: all 0.3s ease;
         }
         
-        .cta-button:hover {
-            transform: translateY(-2px);
+        .timeline-dot.completed {
+            background: rgb(16 185 129);
+            color: white;
         }
         
-        .big-cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 28px 48px;
-            font-size: 1.75rem;
-            min-height: 80px;
+        .timeline-dot.current {
+            background: rgb(16 185 129);
+            color: white;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
+        }
+        
+        .timeline-dot.pending {
+            background: #27272a;
+            color: #64748b;
+            border: 2px solid #3f3f46;
+        }
+        
+        .timeline-label {
+            font-size: 0.95rem;
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -73,27 +105,23 @@
     <!-- TOP NAV -->
     <nav class="bg-zinc-950 border-b border-zinc-800 fixed w-full z-50">
         <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-            <!-- Logo -->
             <div class="flex items-center gap-x-3">
                 <div class="w-9 h-9 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">📱</div>
                 <span class="font-bold text-2xl tracking-tighter text-white">AppLaunch</span>
             </div>
-           
-            <!-- Desktop Menu -->
+            
             <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
                 <a href="#apps" class="hover:text-emerald-400 transition-colors">Apps</a>
                 <a href="#funding" class="hover:text-emerald-400 transition-colors">Funding</a>
                 <a href="#testers" class="hover:text-emerald-400 transition-colors">Testers</a>
                 <a href="#privacy" class="hover:text-emerald-400 transition-colors font-medium">Privacy</a>
             </div>
-           
-            <!-- Desktop Fund Button -->
+            
             <a href="#fund"
-               class="hidden md:flex cta-button bg-white text-zinc-900 px-8 py-3.5 rounded-3xl font-semibold text-sm hover:bg-emerald-400 hover:text-white">
+               class="hidden md:flex bg-white text-zinc-900 px-8 py-3.5 rounded-3xl font-semibold text-sm hover:bg-emerald-400 hover:text-white items-center gap-x-2">
                 🚀 Fund the Launch
             </a>
 
-            <!-- Hamburger -->
             <button id="hamburger" class="md:hidden text-3xl text-white">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -106,8 +134,7 @@
                 <a href="#funding" class="hover:text-emerald-400 transition-colors py-2">Funding</a>
                 <a href="#testers" class="hover:text-emerald-400 transition-colors py-2">Testers</a>
                 <a href="#privacy" class="hover:text-emerald-400 transition-colors py-2">Privacy</a>
-                <a href="#fund"
-                   class="cta-button bg-white text-zinc-900 px-8 py-5 rounded-3xl font-semibold text-center">
+                <a href="#fund" class="bg-white text-zinc-900 px-8 py-5 rounded-3xl font-semibold flex items-center justify-center gap-x-2">
                     🚀 Fund the Launch
                 </a>
             </div>
@@ -129,7 +156,7 @@
                 Built by Anthony • Tempe, AZ
             </p>
             <a href="#fund"
-               class="cta-button mt-12 bg-emerald-500 hover:bg-emerald-600 px-12 py-5 rounded-3xl font-semibold text-lg mx-auto">
+               class="mt-12 bg-emerald-500 hover:bg-emerald-600 px-12 py-5 rounded-3xl font-semibold text-lg inline-flex items-center gap-x-2">
                 🚀 Fund the Launch
             </a>
         </div>
@@ -141,9 +168,7 @@
         <section id="apps" class="mb-24">
             <h2 class="text-4xl font-semibold mb-4 text-center">Apps Currently in Production</h2>
             <p class="text-zinc-400 text-center mb-12">Both use Ads at the bottom + $2.99 Premium data features</p>
-           
-            <!-- Paddle-Go & RiverTracker cards unchanged (they looked good) -->
-            <!-- ... (keeping the exact same app cards from your version for consistency) ... -->
+            
             <!-- Paddle-Go -->
             <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
                 <div class="p-8 md:flex gap-10">
@@ -173,30 +198,41 @@
                             💎 Premium data unlocks for $2.99 per spot • Ads at bottom
                         </div>
                     </div>
+                    
+                    <!-- VERTICAL TIMELINE - PADDLE-GO (current = Adding to Store / step 3) -->
                     <div class="md:w-1/2 mt-10 md:mt-0">
-                        <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-4">DEVELOPMENT PROGRESS</div>
-                        <div class="flex justify-between relative">
-                            <div class="absolute top-5 left-0 right-0 h-px bg-zinc-700"></div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-10 active">1</div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-10 active">2</div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-emerald-500 flex items-center justify-center text-xs font-bold relative z-10">3</div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-10">4</div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-10">5</div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-10">6</div>
-                        </div>
-                        <div class="flex justify-between text-[10px] text-zinc-500 mt-2">
-                            <div class="text-center">Idea</div>
-                            <div class="text-center">Dev</div>
-                            <div class="text-center text-emerald-400 font-medium">Adding to Store</div>
-                            <div class="text-center">Closed Test</div>
-                            <div class="text-center">Open Test</div>
-                            <div class="text-center">Release</div>
+                        <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
+                        <div class="vertical-timeline">
+                            <div class="timeline-step">
+                                <div class="timeline-dot completed">1</div>
+                                <div class="timeline-label text-zinc-400">Idea</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot completed">2</div>
+                                <div class="timeline-label text-zinc-400">Development</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot current">3</div>
+                                <div class="timeline-label font-semibold text-white">Adding to Store</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot pending">4</div>
+                                <div class="timeline-label text-zinc-500">Closed Testing</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot pending">5</div>
+                                <div class="timeline-label text-zinc-500">Open Testing</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot pending">6</div>
+                                <div class="timeline-label text-zinc-500">Final Release</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- RiverTracker (identical structure) -->
+            <!-- RiverTracker -->
             <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden">
                 <div class="p-8 md:flex gap-10">
                     <div class="md:w-1/2">
@@ -222,24 +258,35 @@
                             💎 Premium data unlocks for $2.99 • Ads at bottom
                         </div>
                     </div>
+                    
+                    <!-- VERTICAL TIMELINE - RIVERTRACKER (current = Closed Test / step 4) -->
                     <div class="md:w-1/2 mt-10 md:mt-0">
-                        <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-4">DEVELOPMENT PROGRESS</div>
-                        <div class="flex justify-between relative">
-                            <div class="absolute top-5 left-0 right-0 h-px bg-zinc-700"></div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-10 active">1</div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-10 active">2</div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-10 active">3</div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-emerald-500 flex items-center justify-center text-xs font-bold relative z-10">4</div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-10">5</div>
-                            <div class="timeline-step w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold relative z-10">6</div>
-                        </div>
-                        <div class="flex justify-between text-[10px] text-zinc-500 mt-2">
-                            <div class="text-center">Idea</div>
-                            <div class="text-center">Dev</div>
-                            <div class="text-center">Adding to Store</div>
-                            <div class="text-center text-emerald-400 font-medium">Closed Test</div>
-                            <div class="text-center">Open Test</div>
-                            <div class="text-center">Release</div>
+                        <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
+                        <div class="vertical-timeline">
+                            <div class="timeline-step">
+                                <div class="timeline-dot completed">1</div>
+                                <div class="timeline-label text-zinc-400">Idea</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot completed">2</div>
+                                <div class="timeline-label text-zinc-400">Development</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot completed">3</div>
+                                <div class="timeline-label text-zinc-400">Adding to Store</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot current">4</div>
+                                <div class="timeline-label font-semibold text-white">Closed Testing</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot pending">5</div>
+                                <div class="timeline-label text-zinc-500">Open Testing</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot pending">6</div>
+                                <div class="timeline-label text-zinc-500">Final Release</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,7 +321,7 @@
             </div>
         </div>
 
-        <!-- BETA TESTER & PRIVACY (unchanged - they were fine) -->
+        <!-- BETA TESTER -->
         <section id="testers" class="mt-20 max-w-lg mx-auto">
             <div class="text-center mb-10">
                 <div class="inline-flex items-center gap-x-2 bg-emerald-500/10 text-emerald-400 px-5 py-2 rounded-3xl text-sm font-medium">
@@ -284,7 +331,7 @@
             </div>
             <h2 class="text-4xl font-semibold text-center mb-3">Help Test the Apps</h2>
             <p class="text-zinc-400 text-center mb-10">Get early access + your name in the credits. Applications go straight to my email.</p>
-           
+            
             <form action="https://formsubmit.co/anusb412@gmail.com" method="POST" class="bg-zinc-900 rounded-3xl p-8">
                 <input type="hidden" name="_subject" value="New Beta Tester Application - Paddle-Go / RiverTracker">
                 <input type="hidden" name="_captcha" value="false">
@@ -313,6 +360,7 @@
             </form>
         </section>
 
+        <!-- PRIVACY -->
         <section id="privacy" class="max-w-2xl mx-auto bg-zinc-900 rounded-3xl p-10 text-sm mt-24">
             <h2 class="text-3xl font-semibold mb-6">Privacy Policy</h2>
             <p class="text-zinc-400 mb-6">We take your privacy seriously. These apps collect only the minimum data required to function.</p>
@@ -326,17 +374,17 @@
             <p class="text-[10px] text-zinc-500 mt-10">Last updated March 2026 • Full policy available on request</p>
         </section>
 
-        <!-- FUNDING CTA - PERFECTLY CENTERED & POLISHED -->
+        <!-- FUND CTA -->
         <section id="fund" class="mt-24 text-center">
             <h2 class="text-4xl font-semibold mb-4">Fund My Startup</h2>
             <p class="text-zinc-400 mb-10 max-w-md mx-auto">Help me launch my independent app startup and get Paddle-Go &amp; RiverTracker live on the Play Store ASAP. Any amount gets us closer to revenue!</p>
-           
+            
             <a href="https://buymeacoffee.com/anthonynusbaum"
                target="_blank"
-               class="big-cta cta-button bg-white hover:bg-emerald-400 text-zinc-950 font-semibold rounded-3xl shadow-2xl shadow-emerald-500/20">
+               class="inline-flex items-center gap-x-3 bg-white hover:bg-emerald-400 text-zinc-950 font-semibold text-2xl py-8 px-16 rounded-3xl shadow-2xl shadow-emerald-500/20 transition-all">
                 🚀 Fund the Launch
             </a>
-           
+            
             <p class="text-xs text-zinc-500 mt-8">Instant • Secure • Every dollar goes straight to launching the apps</p>
         </section>
     </div>
