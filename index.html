@@ -113,6 +113,12 @@
         .screenshot-card:hover {
             transform: scale(1.03);
         }
+
+        /* Coming Soon Teaser */
+        .coming-soon-teaser {
+            background: linear-gradient(135deg, #27272a, #18181b);
+            border: 2px dashed #3f3f46;
+        }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200 font-sans">
@@ -161,10 +167,10 @@
                 MICRO-FUNDING • $200–$500
             </div>
             <h1 class="text-5xl md:text-6xl font-bold tracking-tighter leading-none mb-6">
-                Two Real Apps.<br>Ready for Launch.
+                Three Real Apps.<br>Ready for Launch.
             </h1>
             <p class="text-xl text-zinc-300 max-w-lg mx-auto">
-                Paddle-Go &amp; RiverTracker — practical outdoor tools for Android.<br>
+                RiverTracker, Paddle-Go &amp; DreamMapper — practical tools for Android.<br>
                 Built by Anthony • Tempe, AZ
             </p>
             <a href="#fund"
@@ -178,9 +184,91 @@
         <!-- APPS IN PRODUCTION -->
         <section id="apps" class="mb-24">
             <h2 class="text-4xl font-semibold mb-4 text-center">Apps Currently in Production</h2>
-            <p class="text-zinc-400 text-center mb-12">Both use Ads at the bottom + $2.99 Premium data features</p>
+            <p class="text-zinc-400 text-center mb-12">All use Ads at the bottom + premium features</p>
            
-            <!-- PADDLE-GO (WITH SCREENSHOTS) -->
+            <!-- 1. RIVERTRACKER -->
+            <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
+                <div class="p-8 md:flex gap-10">
+                    <div class="md:w-1/2">
+                        <div class="flex items-center gap-x-4 mb-6">
+                            <div class="text-6xl">🏞️</div>
+                            <div>
+                                <div class="text-emerald-400 text-sm font-medium">NOW IN PRODUCTION</div>
+                                <div class="text-4xl font-semibold">RiverTracker</div>
+                            </div>
+                        </div>
+                        <p class="text-zinc-300 text-lg leading-relaxed">
+                            Track river conditions and water levels, view real-time river flow data, explore nearby spots, and get map-based navigation for paddlers and anglers.
+                        </p>
+                        <div class="mt-8">
+                            <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
+                            <div class="text-sm space-y-2">
+                                <div>• Real-time water levels &amp; flow data</div>
+                                <div>• Nearby river spot explorer</div>
+                                <div>• Map navigation for paddlers &amp; anglers</div>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-sm text-zinc-400">
+                            💎 Premium data unlocks for $2.99 • Ads at bottom
+                        </div>
+                    </div>
+                   
+                    <!-- VERTICAL TIMELINE -->
+                    <div class="md:w-1/2 mt-10 md:mt-0">
+                        <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
+                        <div class="vertical-timeline">
+                            <div class="timeline-step">
+                                <div class="timeline-dot completed">1</div>
+                                <div class="timeline-label text-zinc-400">Idea</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot completed">2</div>
+                                <div class="timeline-label text-zinc-400">Development</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot completed">3</div>
+                                <div class="timeline-label text-zinc-400">Adding to Store</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot current">4</div>
+                                <div class="timeline-label font-semibold text-white">Closed Testing</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot pending">5</div>
+                                <div class="timeline-label text-zinc-500">Open Testing</div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot pending">6</div>
+                                <div class="timeline-label text-zinc-500">Final Release</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCREENSHOT GALLERY - RIVERTRACKER (8 images) -->
+                <div class="px-8 pb-10 border-t border-zinc-800">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium">RIVERTRACKER SCREENSHOTS</div>
+                        <div class="text-xs text-zinc-500 flex items-center gap-x-1">
+                            <span class="hidden sm:inline">Swipe to explore</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="screenshot-gallery flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory">
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="rt1.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="rt2.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="rt3.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="rt4.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="rt5.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="rt111.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="rt222.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="rt333.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                    </div>
+                    <p class="text-[10px] text-center text-zinc-500 mt-3">All screenshots are real in-app views • Phone-sized for perfect mobile preview</p>
+                </div>
+            </div>
+
+            <!-- 2. PADDLE-GO -->
             <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
                 <div class="p-8 md:flex gap-10">
                     <div class="md:w-1/2">
@@ -210,7 +298,7 @@
                         </div>
                     </div>
                    
-                    <!-- VERTICAL TIMELINE - PADDLE-GO -->
+                    <!-- VERTICAL TIMELINE -->
                     <div class="md:w-1/2 mt-10 md:mt-0">
                         <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
                         <div class="vertical-timeline">
@@ -242,7 +330,7 @@
                     </div>
                 </div>
 
-                <!-- NEW: BEAUTIFUL SCREENSHOT GALLERY (Mobile-first horizontal scroll) -->
+                <!-- SCREENSHOT GALLERY - PADDLE-GO -->
                 <div class="px-8 pb-10 border-t border-zinc-800">
                     <div class="flex items-center justify-between mb-6">
                         <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium">PADDLE-GO SCREENSHOTS</div>
@@ -251,83 +339,49 @@
                             <i class="fa-solid fa-arrow-right"></i>
                         </div>
                     </div>
-                    
                     <div class="screenshot-gallery flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory">
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/333.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/444.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/555.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/1.png" alt="Paddle-Go Screenshot 1" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/2.png" alt="Paddle-Go Screenshot 2" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/3.png" alt="Paddle-Go Screenshot 3" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/4.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/5.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/6.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/7.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/8.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/9.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/10.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
-                        <div class="flex-shrink-0 w-32 snap-center screenshot-card">
-                            <img src="assets/11.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700">
-                        </div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="pg1.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="pg2.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="pg3.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="pg555.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="pg444.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="flex-shrink-0 w-32 snap-center screenshot-card"><img src="pg333.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
                     </div>
                     <p class="text-[10px] text-center text-zinc-500 mt-3">All screenshots are real in-app views • Phone-sized for perfect mobile preview</p>
                 </div>
             </div>
 
-            <!-- RIVERTRACKER (unchanged) -->
+            <!-- 3. DREAMMAPPER - COMING SOON -->
             <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden">
                 <div class="p-8 md:flex gap-10">
                     <div class="md:w-1/2">
                         <div class="flex items-center gap-x-4 mb-6">
-                            <div class="text-6xl">🏞️</div>
+                            <div class="text-6xl">🌙</div>
                             <div>
-                                <div class="text-emerald-400 text-sm font-medium">NOW IN PRODUCTION</div>
-                                <div class="text-4xl font-semibold">RiverTracker</div>
+                                <div class="text-emerald-400 text-sm font-medium">COMING SOON</div>
+                                <div class="text-4xl font-semibold">DreamMapper</div>
                             </div>
                         </div>
                         <p class="text-zinc-300 text-lg leading-relaxed">
-                            Track river conditions and water levels, view real-time river flow data, explore nearby spots, and get map-based navigation for paddlers and anglers.
+                            Wake up and instantly record your dreams with text, voice, or sketches. View your dream history, get smart summaries, discover hidden connections, and track patterns in your subconscious.
                         </p>
                         <div class="mt-8">
                             <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
-                            <div class="text-sm space-y-2">
-                                <div>• Real-time water levels &amp; flow data</div>
-                                <div>• Nearby river spot explorer</div>
-                                <div>• Map navigation for paddlers &amp; anglers</div>
+                            <div class="grid grid-cols-2 gap-3 text-sm">
+                                <div class="flex items-center gap-x-2"><span class="text-emerald-400">📝</span> Dream logging</div>
+                                <div class="flex items-center gap-x-2"><span class="text-emerald-400">✍️</span> Sketch &amp; draw</div>
+                                <div class="flex items-center gap-x-2"><span class="text-emerald-400">📊</span> Dream history</div>
+                                <div class="flex items-center gap-x-2"><span class="text-emerald-400">🔗</span> Smart connections</div>
+                                <div class="flex items-center gap-x-2"><span class="text-emerald-400">📈</span> Pattern tracking</div>
+                                <div class="flex items-center gap-x-2"><span class="text-emerald-400">🤖</span> AI insights (optional)</div>
                             </div>
                         </div>
                         <div class="mt-8 text-sm text-zinc-400">
-                            💎 Premium data unlocks for $2.99 • Ads at bottom
+                            💎 Premium responses &amp; features for $4.99 one-time • Ads at bottom
                         </div>
                     </div>
                    
-                    <!-- VERTICAL TIMELINE - RIVERTRACKER -->
+                    <!-- VERTICAL TIMELINE -->
                     <div class="md:w-1/2 mt-10 md:mt-0">
                         <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
                         <div class="vertical-timeline">
@@ -336,16 +390,16 @@
                                 <div class="timeline-label text-zinc-400">Idea</div>
                             </div>
                             <div class="timeline-step">
-                                <div class="timeline-dot completed">2</div>
-                                <div class="timeline-label text-zinc-400">Development</div>
+                                <div class="timeline-dot current">2</div>
+                                <div class="timeline-label font-semibold text-white">Development</div>
                             </div>
                             <div class="timeline-step">
-                                <div class="timeline-dot completed">3</div>
-                                <div class="timeline-label text-zinc-400">Adding to Store</div>
+                                <div class="timeline-dot pending">3</div>
+                                <div class="timeline-label text-zinc-500">Adding to Store</div>
                             </div>
                             <div class="timeline-step">
-                                <div class="timeline-dot current">4</div>
-                                <div class="timeline-label font-semibold text-white">Closed Testing</div>
+                                <div class="timeline-dot pending">4</div>
+                                <div class="timeline-label text-zinc-500">Closed Testing</div>
                             </div>
                             <div class="timeline-step">
                                 <div class="timeline-dot pending">5</div>
@@ -356,6 +410,20 @@
                                 <div class="timeline-label text-zinc-500">Final Release</div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- COMING SOON PLACEHOLDER (no images yet) -->
+                <div class="px-8 pb-10 border-t border-zinc-800">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium">DREAMMAPPER SCREENSHOTS</div>
+                        <div class="px-4 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-medium rounded-2xl">COMING SOON</div>
+                    </div>
+                    <div class="coming-soon-teaser rounded-3xl p-12 flex flex-col items-center justify-center text-center min-h-[280px]">
+                        <div class="text-7xl mb-6">🌙</div>
+                        <div class="text-3xl font-semibold text-white mb-2">DreamMapper is coming soon!</div>
+                        <div class="text-zinc-400 max-w-xs">Screenshots and live demo arriving shortly. Be one of the first to test it.</div>
+                        <div class="mt-8 text-[10px] text-zinc-500">Your name can be in the credits if you join the beta list below 👇</div>
                     </div>
                 </div>
             </div>
@@ -376,7 +444,7 @@
                     <div class="text-5xl font-bold text-emerald-400 mt-8">$165–$435</div>
                 </div>
             </div>
-            <p class="text-center text-zinc-400 mt-10 text-sm">Covers everything needed to get both apps live and earning within 90 days</p>
+            <p class="text-center text-zinc-400 mt-10 text-sm">Covers everything needed to get all three apps live and earning within 90 days</p>
         </section>
 
         <!-- OVERALL PLAN -->
@@ -401,7 +469,7 @@
             <p class="text-zinc-400 text-center mb-10">Get early access + your name in the credits. Applications go straight to my email.</p>
            
             <form action="https://formsubmit.co/anusb412@gmail.com" method="POST" class="bg-zinc-900 rounded-3xl p-8">
-                <input type="hidden" name="_subject" value="New Beta Tester Application - Paddle-Go / RiverTracker">
+                <input type="hidden" name="_subject" value="New Beta Tester Application - RiverTracker / Paddle-Go / DreamMapper">
                 <input type="hidden" name="_captcha" value="false">
                 <div class="space-y-6">
                     <div>
@@ -418,7 +486,7 @@
                     </div>
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Why do you want to test these apps?</label>
-                        <textarea name="why" rows="4" required placeholder="I'm an avid paddler and want to help..." class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500 resize-none"></textarea>
+                        <textarea name="why" rows="4" required placeholder="I'm an avid paddler / dreamer and want to help..." class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500 resize-none"></textarea>
                     </div>
                 </div>
                 <button type="submit" class="mt-8 w-full bg-emerald-500 hover:bg-emerald-600 transition-colors text-white font-semibold py-5 rounded-2xl text-lg">
@@ -445,7 +513,7 @@
         <!-- FUND CTA -->
         <section id="fund" class="mt-24 text-center">
             <h2 class="text-4xl font-semibold mb-4">Fund My Startup</h2>
-            <p class="text-zinc-400 mb-10 max-w-md mx-auto">Help me launch my independent app startup and get Paddle-Go &amp; RiverTracker live on the Play Store ASAP. Any amount gets us closer to revenue!</p>
+            <p class="text-zinc-400 mb-10 max-w-md mx-auto">Help me launch my independent app startup and get RiverTracker, Paddle-Go &amp; DreamMapper live on the Play Store ASAP. Any amount gets us closer to revenue!</p>
            
             <a href="https://buymeacoffee.com/anthonynusbaum"
                target="_blank"
