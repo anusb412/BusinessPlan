@@ -8,41 +8,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
-       
+        
         .hero-bg {
             background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
         }
-       
+        
         .timeline-step {
             transition: all 0.3s ease;
         }
-       
+        
         .timeline-step.active {
             background-color: rgb(16 185 129);
             color: white;
             box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
         }
-       
+        
         .app-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-       
+        
         .app-card:hover {
             transform: translateY(-10px);
         }
-       
+        
         .form-input {
             background: #18181b;
             border: 1px solid #3f3f46;
         }
-       
+        
         .mobile-menu {
             animation: slideDown 0.3s ease forwards;
         }
-       
+        
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Button fixes */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .big-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 28px 48px;
+            font-size: 1.75rem;
+            min-height: 80px;
         }
     </style>
 </head>
@@ -66,7 +89,7 @@
            
             <!-- Desktop Fund Button -->
             <a href="#fund"
-               class="hidden md:flex bg-white text-zinc-900 px-7 py-3 rounded-2xl font-semibold text-sm hover:bg-emerald-400 hover:text-white transition-all items-center gap-x-2">
+               class="hidden md:flex cta-button bg-white text-zinc-900 px-8 py-3.5 rounded-3xl font-semibold text-sm hover:bg-emerald-400 hover:text-white">
                 🚀 Fund the Launch
             </a>
 
@@ -78,13 +101,13 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 mobile-menu">
-            <div class="px-6 py-6 flex flex-col gap-y-5 text-sm font-medium">
+            <div class="px-6 py-8 flex flex-col gap-y-6 text-sm font-medium">
                 <a href="#apps" class="hover:text-emerald-400 transition-colors py-2">Apps</a>
                 <a href="#funding" class="hover:text-emerald-400 transition-colors py-2">Funding</a>
                 <a href="#testers" class="hover:text-emerald-400 transition-colors py-2">Testers</a>
                 <a href="#privacy" class="hover:text-emerald-400 transition-colors py-2">Privacy</a>
                 <a href="#fund"
-                   class="mt-4 bg-white text-zinc-900 px-6 py-4 rounded-2xl font-semibold text-center flex items-center justify-center gap-x-2">
+                   class="cta-button bg-white text-zinc-900 px-8 py-5 rounded-3xl font-semibold text-center">
                     🚀 Fund the Launch
                 </a>
             </div>
@@ -92,21 +115,21 @@
     </nav>
 
     <!-- HERO -->
-    <header class="hero-bg pt-24 pb-16 text-white">
+    <header class="hero-bg pt-24 pb-20 text-white">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-x-2 bg-white/10 px-6 py-2 rounded-3xl text-sm mb-6">
+            <div class="inline-flex items-center gap-x-2 bg-white/10 px-6 py-2 rounded-3xl text-sm mb-8">
                 <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                 MICRO-FUNDING • $200–$500
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold tracking-tighter leading-none">
+            <h1 class="text-5xl md:text-6xl font-bold tracking-tighter leading-none mb-6">
                 Two Real Apps.<br>Ready for Launch.
             </h1>
-            <p class="mt-6 text-xl text-zinc-300 max-w-lg mx-auto">
+            <p class="text-xl text-zinc-300 max-w-lg mx-auto">
                 Paddle-Go &amp; RiverTracker — practical outdoor tools for Android.<br>
                 Built by Anthony • Tempe, AZ
             </p>
             <a href="#fund"
-               class="mt-10 inline-block bg-emerald-500 hover:bg-emerald-600 px-10 py-5 rounded-3xl font-semibold text-lg flex items-center gap-x-2 mx-auto">
+               class="cta-button mt-12 bg-emerald-500 hover:bg-emerald-600 px-12 py-5 rounded-3xl font-semibold text-lg mx-auto">
                 🚀 Fund the Launch
             </a>
         </div>
@@ -119,6 +142,8 @@
             <h2 class="text-4xl font-semibold mb-4 text-center">Apps Currently in Production</h2>
             <p class="text-zinc-400 text-center mb-12">Both use Ads at the bottom + $2.99 Premium data features</p>
            
+            <!-- Paddle-Go & RiverTracker cards unchanged (they looked good) -->
+            <!-- ... (keeping the exact same app cards from your version for consistency) ... -->
             <!-- Paddle-Go -->
             <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
                 <div class="p-8 md:flex gap-10">
@@ -148,8 +173,6 @@
                             💎 Premium data unlocks for $2.99 per spot • Ads at bottom
                         </div>
                     </div>
-                   
-                    <!-- Progress Timeline -->
                     <div class="md:w-1/2 mt-10 md:mt-0">
                         <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-4">DEVELOPMENT PROGRESS</div>
                         <div class="flex justify-between relative">
@@ -173,7 +196,7 @@
                 </div>
             </div>
 
-            <!-- RiverTracker -->
+            <!-- RiverTracker (identical structure) -->
             <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden">
                 <div class="p-8 md:flex gap-10">
                     <div class="md:w-1/2">
@@ -199,8 +222,6 @@
                             💎 Premium data unlocks for $2.99 • Ads at bottom
                         </div>
                     </div>
-                   
-                    <!-- Progress Timeline -->
                     <div class="md:w-1/2 mt-10 md:mt-0">
                         <div class="text-xs uppercase tracking-widest text-emerald-400 font-medium mb-4">DEVELOPMENT PROGRESS</div>
                         <div class="flex justify-between relative">
@@ -253,7 +274,7 @@
             </div>
         </div>
 
-        <!-- BETA TESTER APPLICATION -->
+        <!-- BETA TESTER & PRIVACY (unchanged - they were fine) -->
         <section id="testers" class="mt-20 max-w-lg mx-auto">
             <div class="text-center mb-10">
                 <div class="inline-flex items-center gap-x-2 bg-emerald-500/10 text-emerald-400 px-5 py-2 rounded-3xl text-sm font-medium">
@@ -267,50 +288,34 @@
             <form action="https://formsubmit.co/anusb412@gmail.com" method="POST" class="bg-zinc-900 rounded-3xl p-8">
                 <input type="hidden" name="_subject" value="New Beta Tester Application - Paddle-Go / RiverTracker">
                 <input type="hidden" name="_captcha" value="false">
-               
                 <div class="space-y-6">
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Full Name</label>
-                        <input type="text" name="name" required
-                               class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500">
+                        <input type="text" name="name" required class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500">
                     </div>
-                   
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Email Address</label>
-                        <input type="email" name="email" required
-                               class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500">
+                        <input type="email" name="email" required class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500">
                     </div>
-                   
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Android Device</label>
-                        <input type="text" name="device" placeholder="e.g. Samsung Galaxy S23, Pixel 8" required
-                               class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500">
+                        <input type="text" name="device" placeholder="e.g. Samsung Galaxy S23, Pixel 8" required class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500">
                     </div>
-                   
                     <div>
                         <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Why do you want to test these apps?</label>
-                        <textarea name="why" rows="4" required placeholder="I'm an avid paddler and want to help..."
-                                  class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500 resize-none"></textarea>
+                        <textarea name="why" rows="4" required placeholder="I'm an avid paddler and want to help..." class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-emerald-500 resize-none"></textarea>
                     </div>
                 </div>
-               
-                <button type="submit"
-                        class="mt-8 w-full bg-emerald-500 hover:bg-emerald-600 transition-colors text-white font-semibold py-5 rounded-2xl text-lg">
+                <button type="submit" class="mt-8 w-full bg-emerald-500 hover:bg-emerald-600 transition-colors text-white font-semibold py-5 rounded-2xl text-lg">
                     Submit Application
                 </button>
-               
-                <p class="text-[10px] text-zinc-500 text-center mt-6">
-                    Your info will be emailed directly to Anthony • No spam ever
-                </p>
+                <p class="text-[10px] text-zinc-500 text-center mt-6">Your info will be emailed directly to Anthony • No spam ever</p>
             </form>
         </section>
 
-        <!-- PRIVACY POLICY -->
         <section id="privacy" class="max-w-2xl mx-auto bg-zinc-900 rounded-3xl p-10 text-sm mt-24">
             <h2 class="text-3xl font-semibold mb-6">Privacy Policy</h2>
-            <p class="text-zinc-400 mb-6">
-                We take your privacy seriously. These apps collect only the minimum data required to function.
-            </p>
+            <p class="text-zinc-400 mb-6">We take your privacy seriously. These apps collect only the minimum data required to function.</p>
             <ul class="space-y-4 text-zinc-400">
                 <li class="flex gap-x-3">✅ No personal account required for basic use</li>
                 <li class="flex gap-x-3">✅ Location used only for nearby spots (never stored)</li>
@@ -318,20 +323,17 @@
                 <li class="flex gap-x-3">✅ Premium unlocks processed anonymously</li>
                 <li class="flex gap-x-3">✅ We never sell or share your data</li>
             </ul>
-            <p class="text-[10px] text-zinc-500 mt-10">
-                Last updated March 2026 • Full policy available on request
-            </p>
+            <p class="text-[10px] text-zinc-500 mt-10">Last updated March 2026 • Full policy available on request</p>
         </section>
 
-        <!-- FUNDING CTA SECTION -->
+        <!-- FUNDING CTA - PERFECTLY CENTERED & POLISHED -->
         <section id="fund" class="mt-24 text-center">
             <h2 class="text-4xl font-semibold mb-4">Fund My Startup</h2>
-            <p class="text-zinc-400 mb-8 max-w-md mx-auto">Help me launch my independent app startup and get Paddle-Go &amp; RiverTracker live on the Play Store ASAP. Any amount gets us closer to revenue!</p>
+            <p class="text-zinc-400 mb-10 max-w-md mx-auto">Help me launch my independent app startup and get Paddle-Go &amp; RiverTracker live on the Play Store ASAP. Any amount gets us closer to revenue!</p>
            
-            <!-- Buy Me a Coffee Button (still your link) -->
             <a href="https://buymeacoffee.com/anthonynusbaum"
                target="_blank"
-               class="inline-block bg-white hover:bg-emerald-400 text-zinc-950 font-semibold text-2xl py-8 px-16 rounded-3xl shadow-2xl shadow-emerald-500/20 transition-all flex items-center gap-x-3">
+               class="big-cta cta-button bg-white hover:bg-emerald-400 text-zinc-950 font-semibold rounded-3xl shadow-2xl shadow-emerald-500/20">
                 🚀 Fund the Launch
             </a>
            
@@ -342,14 +344,13 @@
     <!-- FOOTER -->
     <footer class="bg-black py-12 border-t border-zinc-800 text-center text-xs text-zinc-500">
         <div>Made by Anthony • Tempe, AZ • 2026</div>
-        <div class="mt-2">Hosted on GitHub Pages • Fully mobile responsive</div>
+        <div class="mt-2">Hosted on GitHub Pages</div>
     </footer>
 
     <script>
-        // Hamburger Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
-       
+        
         hamburger.addEventListener('click', () => {
             if (mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.remove('hidden');
@@ -360,7 +361,6 @@
             }
         });
 
-        // Close mobile menu when clicking a link
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
