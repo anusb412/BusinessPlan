@@ -3,70 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make It Right Design • Micro-Funding 2026</title>
+    <title>Make It Right Design • Funding 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
-     
+        :root {
+            --cyan: #00f5d4;
+            --violet: #7c3aed;
+            --blue: #0ea5e9;
+            --amber: #f59e0b;
+        }
+
+        * { font-family: 'Outfit', sans-serif; }
+        h1, h2, h3, h4, .display { font-family: 'Syne', sans-serif; }
+
+        /* ─── HERO BACKGROUND ─── */
         .hero-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #164e63 45%, #0f172a 100%);
+            background: #020408;
             position: relative;
             overflow: hidden;
         }
-        .hero-bg::after {
+        .hero-bg::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(45, 212, 191, 0.08) 0%, transparent 70%);
-            pointer-events: none;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% -10%, rgba(0,245,212,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 110%, rgba(124,58,237,0.22) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 50% 50%, rgba(14,165,233,0.08) 0%, transparent 70%);
         }
-     
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,245,212,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,245,212,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .orb-1 {
+            position: absolute;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,245,212,0.12) 0%, transparent 70%);
+            top: -150px; left: -150px;
+            animation: pulse-orb 8s ease-in-out infinite;
+        }
+        .orb-2 {
+            position: absolute;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
+            bottom: -100px; right: -100px;
+            animation: pulse-orb 10s ease-in-out infinite reverse;
+        }
+        @keyframes pulse-orb {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+
+        /* ─── NAV ─── */
+        .nav-glass {
+            background: rgba(2, 4, 8, 0.85);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(0,245,212,0.1);
+        }
+
+        /* ─── APP CARDS ─── */
         .app-card {
+            background: linear-gradient(135deg, #0d1117 0%, #0a0f1a 100%);
+            border: 1px solid rgba(255,255,255,0.07);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.3);
+            position: relative;
+            overflow: hidden;
         }
-     
+        .app-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .app-card.river::before { background: radial-gradient(ellipse at top left, rgba(0,245,212,0.08) 0%, transparent 60%); }
+        .app-card.paddle::before { background: radial-gradient(ellipse at top left, rgba(245,158,11,0.08) 0%, transparent 60%); }
+        .app-card.dream::before { background: radial-gradient(ellipse at top left, rgba(124,58,237,0.08) 0%, transparent 60%); }
+        .app-card:hover::before { opacity: 1; }
         .app-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+            transform: translateY(-8px);
+            border-color: rgba(255,255,255,0.14);
+            box-shadow: 0 32px 64px -16px rgba(0,0,0,0.6);
         }
-     
-        .form-input {
-            background: #18181b;
-            border: 1px solid #3f3f46;
-            transition: border-color 0.3s ease;
+
+        /* ─── FUNDING CARDS ─── */
+        .fund-card {
+            background: linear-gradient(135deg, #0d1117, #0a0f1a);
+            border: 1px solid rgba(0,245,212,0.15);
+            transition: all 0.3s ease;
         }
-        .form-input:focus {
-            border-color: #14b8a6;
-            outline: none;
+        .fund-card:hover { border-color: rgba(0,245,212,0.35); }
+
+        /* ─── CONTRIBUTION BAR ─── */
+        .contrib-bar {
+            background: rgba(255,255,255,0.06);
+            border-radius: 9999px;
+            height: 8px;
+            overflow: hidden;
         }
-     
-        .mobile-menu {
-            animation: slideDown 0.3s ease forwards;
+        .contrib-fill {
+            height: 100%;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 12px rgba(0,245,212,0.6);
         }
-     
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-     
-        /* Vertical Timeline */
+
+        /* ─── TIMELINE ─── */
         .vertical-timeline {
             position: relative;
-            padding-left: 32px;
+            padding-left: 36px;
         }
         .vertical-timeline::before {
             content: '';
             position: absolute;
-            left: 13px;
-            top: 8px;
-            bottom: 8px;
+            left: 14px; top: 8px; bottom: 8px;
             width: 3px;
-            background: linear-gradient(to bottom, #334155, #1e2937);
+            background: linear-gradient(to bottom, rgba(0,245,212,0.4), rgba(0,245,212,0.05));
             border-radius: 9999px;
         }
-     
         .timeline-step {
             position: relative;
             margin-bottom: 28px;
@@ -74,141 +137,150 @@
             align-items: flex-start;
             gap: 16px;
         }
-        .timeline-step:last-child { margin-bottom: 0; }
-     
         .timeline-dot {
-            width: 28px;
-            height: 28px;
+            width: 28px; height: 28px;
             flex-shrink: 0;
             border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 700;
             z-index: 10;
-            transition: all 0.3s ease;
         }
-        .timeline-dot.completed { background: #14b8a6; color: white; }
-        .timeline-dot.current {
-            background: #14b8a6;
-            color: white;
-            box-shadow: 0 0 0 5px rgba(20, 184, 166, 0.25);
-        }
-        .timeline-dot.pending {
-            background: #27272a;
-            color: #64748b;
-            border: 2px solid #3f3f46;
-        }
-     
-        /* Screenshot Gallery */
+        .dot-done { background: var(--cyan); color: #020408; }
+        .dot-active { background: var(--cyan); color: #020408; box-shadow: 0 0 0 5px rgba(0,245,212,0.2); }
+        .dot-pending { background: #1a1f2e; color: #4a5568; border: 2px solid #1e2937; }
+
+        /* ─── GALLERY ─── */
         .screenshot-gallery {
-            scrollbar-width: none;
-            scroll-behavior: smooth;
-            cursor: grab;
-            user-select: none;
+            scrollbar-width: none; scroll-behavior: smooth;
+            cursor: grab; user-select: none;
             -webkit-overflow-scrolling: touch;
         }
         .screenshot-gallery:active { cursor: grabbing; }
         .screenshot-gallery::-webkit-scrollbar { display: none; }
-        @media (min-width: 768px) {
-            .screenshot-gallery {
-                scrollbar-width: thin;
-                scrollbar-color: #475569 #27272a;
-            }
-            .screenshot-gallery::-webkit-scrollbar {
-                display: block;
-                height: 7px;
-            }
-            .screenshot-gallery::-webkit-scrollbar-track {
-                background: #27272a;
-                border-radius: 9999px;
-            }
-            .screenshot-gallery::-webkit-scrollbar-thumb {
-                background: #475569;
-                border-radius: 9999px;
-            }
+        .screenshot-card { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .screenshot-card:hover { transform: scale(1.04); }
+
+        /* ─── GLOW TEXT ─── */
+        .glow-cyan { color: var(--cyan); text-shadow: 0 0 30px rgba(0,245,212,0.5); }
+        .glow-violet { color: #a78bfa; text-shadow: 0 0 30px rgba(124,58,237,0.5); }
+
+        /* ─── BADGE ─── */
+        .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
         }
-        .screenshot-card {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .badge-cyan { background: rgba(0,245,212,0.1); color: var(--cyan); border: 1px solid rgba(0,245,212,0.2); }
+        .badge-amber { background: rgba(245,158,11,0.1); color: #fbbf24; border: 1px solid rgba(245,158,11,0.2); }
+        .badge-violet { background: rgba(124,58,237,0.1); color: #a78bfa; border: 1px solid rgba(124,58,237,0.2); }
+
+        /* ─── FORM ─── */
+        .form-input {
+            background: #0d1117;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .screenshot-card:hover {
-            transform: scale(1.04);
+        .form-input:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 3px rgba(0,245,212,0.1);
         }
+        .form-input::placeholder { color: #4a5568; }
+
+        /* ─── MOBILE MENU ─── */
+        .mobile-menu { animation: slideDown 0.3s ease forwards; }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── SECTIONS ─── */
+        .section-divider {
+            width: 40px; height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            border-radius: 9999px;
+        }
+
+        /* ─── COMING SOON ─── */
         .coming-soon-teaser {
-            background: linear-gradient(135deg, #1e2937, #0f172a);
-            border: 2px dashed #334155;
+            background: linear-gradient(135deg, #0d1117, #080c14);
+            border: 2px dashed rgba(124,58,237,0.25);
+        }
+
+        /* ─── STARS BG ─── */
+        .stars {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            width: 2px; height: 2px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0;
+            animation: twinkle var(--d, 4s) ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: var(--op, 0.6); }
         }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-200 font-sans">
+<body class="bg-[#020408] text-zinc-200">
 
-    <!-- CLEAN NAV WITH APPS DROPDOWN -->
-    <nav class="bg-zinc-950 border-b border-zinc-800 fixed w-full z-50">
-        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+    <!-- NAV -->
+    <nav class="nav-glass fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-x-3">
-                <div class="w-9 h-9 bg-teal-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">📱</div>
-                <span class="font-bold text-base md:text-2xl tracking-tighter text-white">Make It Right Design</span>
+                <div class="w-10 h-10 rounded-2xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, #00f5d4, #0ea5e9);">📱</div>
+                <span class="font-bold text-base md:text-xl tracking-tight text-white" style="font-family: 'Syne', sans-serif;">Make It Right Design</span>
             </div>
-         
-            <!-- DESKTOP NAV -->
+
             <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                <a href="index.html" class="hover:text-teal-400 transition-colors">Home</a>
-                
-                <!-- APPS DROPDOWN -->
+                <a href="index.html" class="text-[#00f5d4] transition-colors">Home</a>
                 <div class="relative group">
-                    <button class="flex items-center gap-x-1 hover:text-teal-400 transition-colors">
-                        Apps
-                        <i class="fa-solid fa-chevron-down text-xs mt-px transition-transform group-hover:rotate-180"></i>
+                    <button class="flex items-center gap-x-1 text-zinc-300 hover:text-[#00f5d4] transition-colors">
+                        Apps <i class="fa-solid fa-chevron-down text-xs mt-px transition-transform group-hover:rotate-180"></i>
                     </button>
                     <div class="absolute hidden group-hover:block pt-4 w-64">
-                        <div class="bg-zinc-900 rounded-3xl shadow-2xl py-5 border border-zinc-700 overflow-hidden">
-                            <a href="rivertracker.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors">
-                                🏞️ <span class="font-medium">RiverTracker</span>
-                            </a>
-                            <a href="paddlego.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors">
-                                🛶 <span class="font-medium">Paddle-Go</span>
-                            </a>
-                            <a href="dreammapper.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors">
-                                🌙 <span class="font-medium">DreamMapper</span>
-                            </a>
+                        <div class="rounded-2xl shadow-2xl py-3 overflow-hidden" style="background: #0d1117; border: 1px solid rgba(255,255,255,0.1);">
+                            <a href="rivertracker.html" class="flex items-center gap-3 px-5 py-3 hover:bg-white/5 transition-colors text-zinc-300 hover:text-[#00f5d4]">🏞️ <span>RiverTracker</span></a>
+                            <a href="paddlego.html" class="flex items-center gap-3 px-5 py-3 hover:bg-white/5 transition-colors text-zinc-300 hover:text-[#fbbf24]">🛶 <span>Paddle-Go</span></a>
+                            <a href="dreammapper.html" class="flex items-center gap-3 px-5 py-3 hover:bg-white/5 transition-colors text-zinc-300 hover:text-[#a78bfa]">🌙 <span>DreamMapper</span></a>
                         </div>
                     </div>
                 </div>
-                
-                <a href="index.html#funding" class="hover:text-teal-400 transition-colors">Funding</a>
-                <a href="index.html#testers" class="hover:text-teal-400 transition-colors">Testers</a>
-                <a href="index.html#privacy" class="hover:text-teal-400 transition-colors font-medium">Privacy</a>
+                <a href="#funding" class="text-zinc-300 hover:text-[#00f5d4] transition-colors">Funding</a>
+                <a href="#testers" class="text-zinc-300 hover:text-[#00f5d4] transition-colors">Testers</a>
+                <a href="#privacy" class="text-zinc-300 hover:text-[#00f5d4] transition-colors">Privacy</a>
             </div>
-         
-            <a href="index.html#fund"
-               class="hidden md:flex bg-white text-zinc-900 px-8 py-3.5 rounded-3xl font-semibold text-sm hover:bg-teal-500 hover:text-white items-center gap-x-2 transition-all">
+
+            <a href="#fund" class="hidden md:flex items-center gap-x-2 px-6 py-3 rounded-2xl font-semibold text-sm transition-all text-[#020408]" style="background: linear-gradient(135deg, #00f5d4, #0ea5e9); box-shadow: 0 0 24px rgba(0,245,212,0.3);">
                 Fund the Launch
             </a>
-            <button id="hamburger" class="md:hidden text-3xl text-white">
+            <button id="hamburger" class="md:hidden text-2xl text-white">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
-        <!-- MOBILE MENU -->
-        <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 mobile-menu">
-            <div class="px-6 py-8 flex flex-col gap-y-6 text-sm font-medium">
-                <a href="index.html" class="hover:text-teal-400 transition-colors py-2">Home</a>
-                
-                <div class="border-t border-zinc-800 pt-6">
-                    <div class="text-teal-400 font-medium mb-4 flex items-center gap-x-2">
-                        <span>Apps</span>
-                    </div>
-                    <a href="rivertracker.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors">🏞️ RiverTracker</a>
-                    <a href="paddlego.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors">🛶 Paddle-Go</a>
-                    <a href="dreammapper.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors">🌙 DreamMapper</a>
+        <div id="mobile-menu" class="hidden md:hidden mobile-menu border-t" style="background: #020408; border-color: rgba(0,245,212,0.1);">
+            <div class="px-6 py-8 flex flex-col gap-y-5 text-sm font-medium">
+                <a href="index.html" class="text-[#00f5d4] py-2">Home</a>
+                <div class="border-t pt-5" style="border-color: rgba(255,255,255,0.08);">
+                    <div class="text-xs uppercase tracking-widest text-zinc-500 mb-4">Apps</div>
+                    <a href="rivertracker.html" class="block py-3 pl-3 text-zinc-300 hover:text-[#00f5d4]">🏞️ RiverTracker</a>
+                    <a href="paddlego.html" class="block py-3 pl-3 text-zinc-300 hover:text-[#fbbf24]">🛶 Paddle-Go</a>
+                    <a href="dreammapper.html" class="block py-3 pl-3 text-zinc-300 hover:text-[#a78bfa]">🌙 DreamMapper</a>
                 </div>
-                
-                <a href="index.html#funding" class="hover:text-teal-400 transition-colors py-2">Funding</a>
-                <a href="index.html#testers" class="hover:text-teal-400 transition-colors py-2">Testers</a>
-                <a href="index.html#privacy" class="hover:text-teal-400 transition-colors py-2">Privacy</a>
-                
-                <a href="index.html#fund" class="bg-white text-zinc-900 px-8 py-5 rounded-3xl font-semibold flex items-center justify-center gap-x-2 mt-4">
+                <a href="#funding" class="text-zinc-300 py-2">Funding</a>
+                <a href="#testers" class="text-zinc-300 py-2">Testers</a>
+                <a href="#privacy" class="text-zinc-300 py-2">Privacy</a>
+                <a href="#fund" class="py-4 rounded-2xl font-semibold text-center text-[#020408]" style="background: linear-gradient(135deg, #00f5d4, #0ea5e9);">
                     Fund the Launch
                 </a>
             </div>
@@ -216,421 +288,455 @@
     </nav>
 
     <!-- HERO -->
-    <header class="hero-bg pt-24 pb-16 md:pb-24 text-white">
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl text-sm mb-8 border border-white/10">
-                MICRO-FUNDING • $200–$500
-            </div>
-            <h1 class="text-3xl md:text-6xl font-bold tracking-tighter leading-none mb-5">
-                Three Real Apps.<br>Ready for Launch.
-            </h1>
-            <p class="text-base md:text-xl text-zinc-300 max-w-lg mx-auto">
-                RiverTracker, Paddle-Go &amp; DreamMapper — practical tools for Android.<br>
-                Built by Anthony • Tempe, AZ
-            </p>
-            
-            <div class="flex flex-wrap justify-center gap-4 mt-10">
-                <a href="rivertracker.html" 
-                   class="bg-white/10 hover:bg-white/20 backdrop-blur-md px-5 md:px-8 py-3 md:py-3.5 rounded-3xl font-medium flex items-center gap-x-2 transition-all border border-white/10 text-sm md:text-base">
-                    🏞️ RiverTracker
-                </a>
-                <a href="paddlego.html" 
-                   class="bg-white/10 hover:bg-white/20 backdrop-blur-md px-5 md:px-8 py-3 md:py-3.5 rounded-3xl font-medium flex items-center gap-x-2 transition-all border border-white/10 text-sm md:text-base">
-                    🛶 Paddle-Go
-                </a>
-                <a href="dreammapper.html" 
-                   class="bg-white/10 hover:bg-white/20 backdrop-blur-md px-5 md:px-8 py-3 md:py-3.5 rounded-3xl font-medium flex items-center gap-x-2 transition-all border border-white/10 text-sm md:text-base">
-                    🌙 DreamMapper
-                </a>
+    <header class="hero-bg pt-28 pb-24 text-white" style="min-height: 90vh; display: flex; align-items: center;">
+        <div class="hero-grid"></div>
+        <div class="orb-1"></div>
+        <div class="orb-2"></div>
+
+        <!-- Stars -->
+        <div class="stars" id="stars"></div>
+
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10 w-full">
+            <div class="badge badge-cyan mb-8 mx-auto" style="display: inline-flex;">
+                <i class="fa-solid fa-circle text-[6px] animate-pulse"></i>
+                LIVE MICRO-FUNDING CAMPAIGN
             </div>
 
-            <a href="index.html#fund"
-               class="mt-8 md:mt-12 bg-teal-500 hover:bg-teal-600 px-8 md:px-12 py-4 md:py-5 rounded-3xl font-semibold text-base md:text-lg inline-flex items-center gap-x-2 transition-all shadow-xl shadow-teal-500/20">
+            <h1 style="font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 800; line-height: 1; letter-spacing: -0.03em;" class="mb-6">
+                Three Real Apps.<br>
+                <span class="glow-cyan">Ready for Launch.</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-zinc-400 max-w-xl mx-auto leading-relaxed mb-4">
+                RiverTracker, Paddle-Go & DreamMapper — practical tools for Android.
+            </p>
+            <p class="text-sm text-zinc-500 mb-12">Built by Anthony · Tempe, AZ</p>
+
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <a href="rivertracker.html" class="flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-medium transition-all text-[#00f5d4]" style="background: rgba(0,245,212,0.08); border: 1px solid rgba(0,245,212,0.2);">🏞️ RiverTracker</a>
+                <a href="paddlego.html" class="flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-medium transition-all text-[#fbbf24]" style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2);">🛶 Paddle-Go</a>
+                <a href="dreammapper.html" class="flex items-center gap-2 px-5 py-3 rounded-2xl text-sm font-medium transition-all text-[#a78bfa]" style="background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.2);">🌙 DreamMapper</a>
+            </div>
+
+            <a href="#fund" class="inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-lg transition-all text-[#020408]" style="background: linear-gradient(135deg, #00f5d4, #0ea5e9); box-shadow: 0 0 50px rgba(0,245,212,0.3);">
+                <i class="fa-solid fa-rocket"></i>
                 Fund the Launch
             </a>
+
+            <div class="mt-16 grid grid-cols-3 gap-4 max-w-sm mx-auto">
+                <div class="text-center">
+                    <div class="text-2xl font-bold glow-cyan" style="font-family: 'Syne', sans-serif;">3</div>
+                    <div class="text-xs text-zinc-500 mt-1">Apps Built</div>
+                </div>
+                <div class="text-center border-x" style="border-color: rgba(255,255,255,0.08);">
+                    <div class="text-2xl font-bold glow-cyan" style="font-family: 'Syne', sans-serif;">1</div>
+                    <div class="text-xs text-zinc-500 mt-1">Solo Dev</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold glow-cyan" style="font-family: 'Syne', sans-serif;">90d</div>
+                    <div class="text-xs text-zinc-500 mt-1">To Launch</div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <div class="max-w-5xl mx-auto px-6 py-16">
-        <!-- APPS IN PRODUCTION -->
-        <section id="apps" class="mb-24">
-            <h2 class="text-2xl md:text-4xl font-semibold mb-4 text-center">Apps Currently in Production</h2>
-            <p class="text-zinc-400 text-center mb-12">All include ads + premium unlocks</p>
-         
-            <!-- 1. RIVERTRACKER -->
-            <a href="rivertracker.html" class="block">
-                <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
-                    <div class="p-5 md:p-8 md:flex gap-10">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+
+        <!-- ─── APPS SECTION ─── -->
+        <section id="apps" class="mb-28">
+            <div class="text-center mb-16">
+                <div class="section-divider mx-auto mb-6"></div>
+                <h2 style="font-family: 'Syne', sans-serif;" class="text-3xl md:text-5xl font-bold text-white">Apps in Production</h2>
+                <p class="text-zinc-500 mt-3">All include ads + premium unlocks. Click any to learn more.</p>
+            </div>
+
+            <!-- RIVERTRACKER -->
+            <a href="rivertracker.html" class="block mb-8">
+                <div class="app-card river rounded-3xl overflow-hidden">
+                    <div class="p-6 md:p-10 md:flex gap-12 items-start">
                         <div class="md:w-1/2">
-                            <div class="flex items-center gap-x-4 mb-6">
-                                <div class="text-6xl">🏞️</div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="text-5xl">🏞️</div>
                                 <div>
-                                    <div class="text-teal-400 text-sm font-medium">NOW IN PRODUCTION</div>
-                                    <div class="text-2xl md:text-4xl font-semibold">RiverTracker</div>
+                                    <div class="badge badge-cyan mb-2">Now in Production · Closed Testing</div>
+                                    <div class="text-2xl md:text-3xl font-bold text-white" style="font-family: 'Syne', sans-serif;">RiverTracker</div>
                                 </div>
                             </div>
-                            <p class="text-zinc-300 text-lg leading-relaxed">
-                                Track river conditions and water levels, view real-time river flow data, explore nearby spots, and get map-based navigation for paddlers and anglers.
-                            </p>
-                            <div class="mt-8">
-                                <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
-                                <div class="grid grid-cols-2 gap-2 text-sm">
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">📊</span> Real-time levels</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">💧</span> Flow data</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">📍</span> Nearby spots</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🗺️</span> Map navigation</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🎣</span> Angler data</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🛶</span> Paddler routes</div>
-                                </div>
+                            <p class="text-zinc-400 leading-relaxed mb-6">Track river conditions and water levels, view real-time river flow data, explore nearby spots, and get map-based navigation for paddlers and anglers.</p>
+                            <div class="grid grid-cols-2 gap-2 text-sm text-[#00f5d4]">
+                                <div class="flex items-center gap-2">📊 Real-time levels</div>
+                                <div class="flex items-center gap-2">💧 Flow data</div>
+                                <div class="flex items-center gap-2">📍 Nearby spots</div>
+                                <div class="flex items-center gap-2">🗺️ Map navigation</div>
+                                <div class="flex items-center gap-2">🎣 Angler data</div>
+                                <div class="flex items-center gap-2">🛶 Paddler routes</div>
                             </div>
-                            <div class="mt-8 text-sm text-zinc-400">
-                                Premium data unlocks for $2.99 • Ads at bottom
+                            <div class="mt-6 px-5 py-3 rounded-xl text-xs text-zinc-500" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
+                                Premium data unlocks for $2.99 · Ads at bottom
                             </div>
                         </div>
-                        <div class="md:w-1/2 mt-10 md:mt-0">
-                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
+                        <div class="md:w-1/2 mt-8 md:mt-0">
+                            <div class="text-xs uppercase tracking-widest text-[#00f5d4] font-semibold mb-6">Development Progress</div>
                             <div class="vertical-timeline">
-                                <div class="timeline-step">
-                                    <div class="timeline-dot completed">1</div>
-                                    <div class="timeline-label text-zinc-400">Idea</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot completed">2</div>
-                                    <div class="timeline-label text-zinc-400">Development</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot completed">3</div>
-                                    <div class="timeline-label text-zinc-400">Adding to Store</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot current">4</div>
-                                    <div class="timeline-label font-semibold text-white">Closed Testing</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot pending">5</div>
-                                    <div class="timeline-label text-zinc-500">Open Testing</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot pending">6</div>
-                                    <div class="timeline-label text-zinc-500">Final Release</div>
-                                </div>
+                                <div class="timeline-step"><div class="timeline-dot dot-done">✓</div><div class="text-zinc-400 text-sm">Idea</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-done">✓</div><div class="text-zinc-400 text-sm">Development</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-done">✓</div><div class="text-zinc-400 text-sm">Adding to Store</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-active">4</div><div class="font-semibold text-white text-sm">Closed Testing</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-pending">5</div><div class="text-zinc-500 text-sm">Open Testing</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-pending">6</div><div class="text-zinc-500 text-sm">Final Release</div></div>
                             </div>
                         </div>
                     </div>
-                    <div class="px-4 md:px-8 pb-6 md:pb-10 pt-6 border-t border-zinc-800">
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">RIVERTRACKER SCREENSHOTS</div>
-                            <div class="text-xs text-zinc-500 flex items-center gap-x-1">
-                                <span class="hidden md:inline">Drag to explore</span>
-                                <span class="md:hidden">Swipe to explore</span>
-                                <i class="fa-solid fa-arrows-left-right"></i>
-                            </div>
+                    <div class="border-t px-6 md:px-10 py-6" style="border-color: rgba(255,255,255,0.06);">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-xs uppercase tracking-widest text-[#00f5d4] font-semibold">Screenshots · Real In-App Views</div>
+                            <div class="text-xs text-zinc-500">Drag to explore <i class="fa-solid fa-arrows-left-right ml-1"></i></div>
                         </div>
-                        <div class="screenshot-gallery flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory">
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt111.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt222.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt333.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt1.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt2.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt3.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt4.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt5.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        <div class="screenshot-gallery flex gap-5 overflow-x-auto pb-4 snap-x">
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/rt111.png" alt="RiverTracker" class="w-full rounded-2xl border" style="border-color: rgba(0,245,212,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/rt222.png" alt="RiverTracker" class="w-full rounded-2xl border" style="border-color: rgba(0,245,212,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/rt333.png" alt="RiverTracker" class="w-full rounded-2xl border" style="border-color: rgba(0,245,212,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/rt1.png" alt="RiverTracker" class="w-full rounded-2xl border" style="border-color: rgba(0,245,212,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/rt2.png" alt="RiverTracker" class="w-full rounded-2xl border" style="border-color: rgba(0,245,212,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/rt3.png" alt="RiverTracker" class="w-full rounded-2xl border" style="border-color: rgba(0,245,212,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/rt4.png" alt="RiverTracker" class="w-full rounded-2xl border" style="border-color: rgba(0,245,212,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/rt5.png" alt="RiverTracker" class="w-full rounded-2xl border" style="border-color: rgba(0,245,212,0.15);"></div>
                         </div>
-                        <p class="text-[10px] text-center text-zinc-500 mt-3">All screenshots are real in-app views • Phone-sized for perfect mobile preview</p>
                     </div>
                 </div>
             </a>
 
-            <!-- 2. PADDLE-GO -->
-            <a href="paddlego.html" class="block">
-                <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
-                    <div class="p-5 md:p-8 md:flex gap-10">
+            <!-- PADDLE-GO -->
+            <a href="paddlego.html" class="block mb-8">
+                <div class="app-card paddle rounded-3xl overflow-hidden">
+                    <div class="p-6 md:p-10 md:flex gap-12 items-start">
                         <div class="md:w-1/2">
-                            <div class="flex items-center gap-x-4 mb-6">
-                                <div class="text-6xl">🛶</div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="text-5xl">🛶</div>
                                 <div>
-                                    <div class="text-teal-400 text-sm font-medium">NOW IN PRODUCTION</div>
-                                    <div class="text-2xl md:text-4xl font-semibold">Paddle-Go</div>
+                                    <div class="badge badge-amber mb-2">In Production · Store Submission</div>
+                                    <div class="text-2xl md:text-3xl font-bold text-white" style="font-family: 'Syne', sans-serif;">Paddle-Go</div>
                                 </div>
                             </div>
-                            <p class="text-zinc-300 text-lg leading-relaxed">
-                                Discover paddleboarding spots, check real-time conditions, track your sessions, and connect with the paddling community.
-                            </p>
-                            <div class="mt-8">
-                                <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
-                                <div class="grid grid-cols-2 gap-2 text-sm">
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">✨</span> Find spots</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🌊</span> Live conditions</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">💨</span> Wind &amp; weather</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🗺️</span> GPS launch points</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">⚠️</span> Safety data</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">💬</span> Community tips</div>
-                                </div>
+                            <p class="text-zinc-400 leading-relaxed mb-6">Discover paddleboarding spots, check real-time conditions, track your sessions, and connect with the paddling community.</p>
+                            <div class="grid grid-cols-2 gap-2 text-sm text-[#fbbf24]">
+                                <div class="flex items-center gap-2">✨ Find spots</div>
+                                <div class="flex items-center gap-2">🌊 Live conditions</div>
+                                <div class="flex items-center gap-2">💨 Wind & weather</div>
+                                <div class="flex items-center gap-2">🗺️ GPS launch points</div>
+                                <div class="flex items-center gap-2">⚠️ Safety data</div>
+                                <div class="flex items-center gap-2">💬 Community tips</div>
                             </div>
-                            <div class="mt-8 text-sm text-zinc-400">
-                                Premium data unlocks for $2.99 per spot • Ads at bottom
+                            <div class="mt-6 px-5 py-3 rounded-xl text-xs text-zinc-500" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
+                                Premium data unlocks for $2.99 per spot · Ads at bottom
                             </div>
                         </div>
-                        <div class="md:w-1/2 mt-10 md:mt-0">
-                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
+                        <div class="md:w-1/2 mt-8 md:mt-0">
+                            <div class="text-xs uppercase tracking-widest text-[#fbbf24] font-semibold mb-6">Development Progress</div>
                             <div class="vertical-timeline">
-                                <div class="timeline-step">
-                                    <div class="timeline-dot completed">1</div>
-                                    <div class="timeline-label text-zinc-400">Idea</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot completed">2</div>
-                                    <div class="timeline-label text-zinc-400">Development</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot current">3</div>
-                                    <div class="timeline-label font-semibold text-white">Adding to Store</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot pending">4</div>
-                                    <div class="timeline-label text-zinc-500">Closed Testing</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot pending">5</div>
-                                    <div class="timeline-label text-zinc-500">Open Testing</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot pending">6</div>
-                                    <div class="timeline-label text-zinc-500">Final Release</div>
-                                </div>
+                                <div class="timeline-step"><div class="timeline-dot dot-done">✓</div><div class="text-zinc-400 text-sm">Idea</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-done">✓</div><div class="text-zinc-400 text-sm">Development</div></div>
+                                <div class="timeline-step"><div class="timeline-dot" style="background:#fbbf24; color:#451a03; box-shadow: 0 0 0 5px rgba(251,191,36,0.2);">3</div><div class="font-semibold text-white text-sm">Adding to Store</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-pending">4</div><div class="text-zinc-500 text-sm">Closed Testing</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-pending">5</div><div class="text-zinc-500 text-sm">Open Testing</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-pending">6</div><div class="text-zinc-500 text-sm">Final Release</div></div>
                             </div>
                         </div>
                     </div>
-                    <div class="px-4 md:px-8 pb-6 md:pb-8 pt-6 md:pt-8 border-t border-zinc-800">
-                        <div class="flex items-center justify-between mb-6">
+                    <div class="border-t px-6 md:px-10 py-6" style="border-color: rgba(255,255,255,0.06);">
+                        <div class="text-xs uppercase tracking-widest text-[#fbbf24] font-semibold mb-4">Official Promo</div>
+                        <a href="https://www.tiktok.com/@jaggedop/video/7615032395443555597" target="_blank" class="flex items-center gap-4 p-5 rounded-2xl transition-all mb-6" style="background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.15);">
+                            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(245,158,11,0.15);">
+                                <i class="fa-solid fa-play text-[#fbbf24] text-xl"></i>
+                            </div>
                             <div>
-                                <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">LIVE ADVERTISEMENT</div>
-                                <div class="text-lg font-semibold text-white">Paddle-Go Promo Video</div>
+                                <div class="font-semibold text-white text-sm">Watch the Official 14-second Promo</div>
+                                <div class="text-xs text-zinc-500 mt-1">Real footage from the river · TikTok Live Ad</div>
                             </div>
-                            <div class="px-4 py-1 bg-teal-500/10 text-teal-400 text-xs font-medium rounded-2xl">NEW</div>
+                            <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-zinc-600 text-xs"></i>
+                        </a>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-xs uppercase tracking-widest text-[#fbbf24] font-semibold">Screenshots · Real In-App Views</div>
                         </div>
-                        <div class="max-w-md mx-auto">
-                            <a href="https://www.tiktok.com/@jaggedop/video/7615032395443555597"
-                               target="_blank"
-                               class="group flex flex-col items-center justify-center bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-teal-500 rounded-3xl px-8 py-10 text-center transition-all">
-                                <div class="w-16 h-16 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                    <i class="fa-solid fa-play text-4xl text-teal-400"></i>
-                                </div>
-                                <div class="font-semibold text-xl text-white">Watch the 14-second Live Ad</div>
-                                <div class="text-zinc-400 mt-1">Official Paddle-Go promo on TikTok</div>
-                                <div class="mt-6 text-xs uppercase tracking-widest bg-black px-5 py-2 rounded-full border border-zinc-700 text-teal-400 flex items-center gap-x-2">
-                                    <span>Opens in new tab</span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </div>
-                            </a>
+                        <div class="screenshot-gallery flex gap-5 overflow-x-auto pb-4 snap-x">
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/pg555.png" alt="Paddle-Go" class="w-full rounded-2xl border" style="border-color: rgba(245,158,11,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/pg444.png" alt="Paddle-Go" class="w-full rounded-2xl border" style="border-color: rgba(245,158,11,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/pg333.png" alt="Paddle-Go" class="w-full rounded-2xl border" style="border-color: rgba(245,158,11,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/pg1.png" alt="Paddle-Go" class="w-full rounded-2xl border" style="border-color: rgba(245,158,11,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/pg2.png" alt="Paddle-Go" class="w-full rounded-2xl border" style="border-color: rgba(245,158,11,0.15);"></div>
+                            <div class="flex-shrink-0 w-32 md:w-44 snap-center screenshot-card"><img src="assets/pg3.png" alt="Paddle-Go" class="w-full rounded-2xl border" style="border-color: rgba(245,158,11,0.15);"></div>
                         </div>
-                        <p class="text-center text-[10px] text-zinc-500 mt-6">Real footage • No autoplay • Click to view</p>
-                    </div>
-                    <div class="px-4 md:px-8 pb-6 md:pb-10 pt-6 border-t border-zinc-800">
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">PADDLE-GO SCREENSHOTS</div>
-                            <div class="text-xs text-zinc-500 flex items-center gap-x-1">
-                                <span class="hidden md:inline">Drag to explore</span>
-                                <span class="md:hidden">Swipe to explore</span>
-                                <i class="fa-solid fa-arrows-left-right"></i>
-                            </div>
-                        </div>
-                        <div class="screenshot-gallery flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory">
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg555.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg444.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg333.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg1.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg2.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg3.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        </div>
-                        <p class="text-[10px] text-center text-zinc-500 mt-3">All screenshots are real in-app views • Phone-sized for perfect mobile preview</p>
                     </div>
                 </div>
             </a>
 
-            <!-- 3. DREAMMAPPER -->
+            <!-- DREAMMAPPER -->
             <a href="dreammapper.html" class="block">
-                <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden">
-                    <div class="p-5 md:p-8 md:flex gap-10">
+                <div class="app-card dream rounded-3xl overflow-hidden">
+                    <div class="p-6 md:p-10 md:flex gap-12 items-start">
                         <div class="md:w-1/2">
-                            <div class="flex items-center gap-x-4 mb-6">
-                                <div class="text-6xl">🌙</div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="text-5xl">🌙</div>
                                 <div>
-                                    <div class="text-teal-400 text-sm font-medium">COMING SOON</div>
-                                    <div class="text-2xl md:text-4xl font-semibold">DreamMapper</div>
+                                    <div class="badge badge-violet mb-2">In Development</div>
+                                    <div class="text-2xl md:text-3xl font-bold text-white" style="font-family: 'Syne', sans-serif;">DreamMapper</div>
                                 </div>
                             </div>
-                            <p class="text-zinc-300 text-lg leading-relaxed">
-                                Wake up and instantly record your dreams with text, voice, or sketches. View your dream history, get smart summaries, discover hidden connections, and track patterns in your subconscious.
-                            </p>
-                            <div class="mt-8">
-                                <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
-                                <div class="grid grid-cols-2 gap-2 text-sm">
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">📝</span> Dream logging</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">✍️</span> Sketch &amp; draw</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">📊</span> Dream history</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🔗</span> Smart connections</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">📈</span> Pattern tracking</div>
-                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🤖</span> AI insights (optional)</div>
-                                </div>
+                            <p class="text-zinc-400 leading-relaxed mb-6">Wake up and instantly record your dreams with text, voice, or sketches. View your dream history, get smart summaries, discover hidden connections, and track patterns in your subconscious.</p>
+                            <div class="grid grid-cols-2 gap-2 text-sm text-[#a78bfa]">
+                                <div class="flex items-center gap-2">📝 Dream logging</div>
+                                <div class="flex items-center gap-2">✍️ Sketch & draw</div>
+                                <div class="flex items-center gap-2">📊 Dream history</div>
+                                <div class="flex items-center gap-2">🔗 Smart connections</div>
+                                <div class="flex items-center gap-2">📈 Pattern tracking</div>
+                                <div class="flex items-center gap-2">🤖 AI insights</div>
                             </div>
-                            <div class="mt-8 text-sm text-zinc-400">
-                                Premium responses &amp; features for $4.99 one-time • Ads at bottom
+                            <div class="mt-6 px-5 py-3 rounded-xl text-xs text-zinc-500" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);">
+                                Premium responses & features for $4.99 one-time · Ads at bottom
                             </div>
                         </div>
-                        <div class="md:w-1/2 mt-10 md:mt-0">
-                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
+                        <div class="md:w-1/2 mt-8 md:mt-0">
+                            <div class="text-xs uppercase tracking-widest text-[#a78bfa] font-semibold mb-6">Development Progress</div>
                             <div class="vertical-timeline">
-                                <div class="timeline-step">
-                                    <div class="timeline-dot completed">1</div>
-                                    <div class="timeline-label text-zinc-400">Idea</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot current">2</div>
-                                    <div class="timeline-label font-semibold text-white">Development</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot pending">3</div>
-                                    <div class="timeline-label text-zinc-500">Adding to Store</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot pending">4</div>
-                                    <div class="timeline-label text-zinc-500">Closed Testing</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot pending">5</div>
-                                    <div class="timeline-label text-zinc-500">Open Testing</div>
-                                </div>
-                                <div class="timeline-step">
-                                    <div class="timeline-dot pending">6</div>
-                                    <div class="timeline-label text-zinc-500">Final Release</div>
-                                </div>
+                                <div class="timeline-step"><div class="timeline-dot dot-done">✓</div><div class="text-zinc-400 text-sm">Idea</div></div>
+                                <div class="timeline-step"><div class="timeline-dot" style="background:#a78bfa; color:#0a0015; box-shadow: 0 0 0 5px rgba(167,139,250,0.2);">2</div><div class="font-semibold text-white text-sm">Development</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-pending">3</div><div class="text-zinc-500 text-sm">Adding to Store</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-pending">4</div><div class="text-zinc-500 text-sm">Closed Testing</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-pending">5</div><div class="text-zinc-500 text-sm">Open Testing</div></div>
+                                <div class="timeline-step"><div class="timeline-dot dot-pending">6</div><div class="text-zinc-500 text-sm">Final Release</div></div>
                             </div>
                         </div>
                     </div>
-                    <div class="px-4 md:px-8 pb-6 md:pb-10 pt-6 border-t border-zinc-800">
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">DREAMMAPPER SCREENSHOTS</div>
-                            <div class="px-4 py-1 bg-teal-500/10 text-teal-400 text-xs font-medium rounded-2xl">COMING SOON</div>
-                        </div>
-                        <div class="coming-soon-teaser rounded-3xl p-8 md:p-12 flex flex-col items-center justify-center text-center min-h-[280px]">
-                            <div class="text-7xl mb-6">🌙</div>
-                            <div class="text-xl md:text-3xl font-semibold text-white mb-2">DreamMapper is coming soon!</div>
-                            <div class="text-zinc-400 max-w-xs">Screenshots and live demo arriving shortly. Be one of the first to test it.</div>
-                            <div class="mt-8 text-[10px] text-zinc-500">Your name can be in the credits if you join the beta list below 👇</div>
+                    <div class="border-t px-6 md:px-10 py-8" style="border-color: rgba(255,255,255,0.06);">
+                        <div class="coming-soon-teaser rounded-2xl p-10 flex flex-col items-center justify-center text-center">
+                            <div class="text-5xl mb-4">🌙</div>
+                            <div class="text-xl font-bold text-white mb-2" style="font-family: 'Syne', sans-serif;">DreamMapper is almost here</div>
+                            <div class="text-zinc-500 text-sm max-w-xs">Screenshots, live demo, and beta access arriving shortly. Your name can be in the credits if you join the beta list below.</div>
                         </div>
                     </div>
                 </div>
             </a>
         </section>
 
-        <!-- FUNDING -->
-        <section id="funding" class="mb-20">
-            <h2 class="text-2xl md:text-4xl font-semibold mb-8 text-center">Funding Needed: $200–$500</h2>
-            <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                <div class="bg-zinc-900 p-8 rounded-3xl">
-                    <div class="text-teal-400 text-sm">Monthly</div>
-                    <div class="text-2xl font-medium mt-2">Appwrite Cloud + Expo Builds</div>
-                    <div class="text-4xl md:text-5xl font-bold text-teal-400 mt-6">$35–$65</div>
+        <!-- ─── WHAT FUNDING GOES TOWARD ─── -->
+        <section id="funding" class="mb-28">
+            <div class="text-center mb-16">
+                <div class="section-divider mx-auto mb-6"></div>
+                <h2 style="font-family: 'Syne', sans-serif;" class="text-3xl md:text-5xl font-bold text-white">Where Your Support Goes</h2>
+                <p class="text-zinc-500 mt-3 max-w-xl mx-auto">Every dollar goes directly toward getting these apps live. Here's exactly what funding is used for.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <!-- RiverTracker funding breakdown -->
+                <div class="fund-card rounded-3xl p-8">
+                    <div class="text-3xl mb-4">🏞️</div>
+                    <div class="text-[#00f5d4] text-xs uppercase tracking-widest font-semibold mb-2">RiverTracker</div>
+                    <div class="text-lg font-bold text-white mb-5" style="font-family: 'Syne', sans-serif;">Funding Used For</div>
+                    <ul class="space-y-3 text-sm text-zinc-400">
+                        <li class="flex items-start gap-3"><span class="text-[#00f5d4] mt-0.5 flex-shrink-0">→</span>Appwrite cloud database hosting for user data & river conditions</li>
+                        <li class="flex items-start gap-3"><span class="text-[#00f5d4] mt-0.5 flex-shrink-0">→</span>Google Play Developer registration & publishing fees</li>
+                        <li class="flex items-start gap-3"><span class="text-[#00f5d4] mt-0.5 flex-shrink-0">→</span>EAS/Expo build & deploy pipeline subscriptions</li>
+                        <li class="flex items-start gap-3"><span class="text-[#00f5d4] mt-0.5 flex-shrink-0">→</span>USGS river data API upgrades for premium features</li>
+                        <li class="flex items-start gap-3"><span class="text-[#00f5d4] mt-0.5 flex-shrink-0">→</span>App Store screenshot & icon design polish</li>
+                    </ul>
+                    <div class="mt-6 pt-5 border-t" style="border-color: rgba(0,245,212,0.1);">
+                        <div class="text-xs text-zinc-500 mb-2">Contributions Received</div>
+                        <div class="contrib-bar mb-2"><div class="contrib-fill" style="width: 0%; background: linear-gradient(90deg, #00f5d4, #0ea5e9);"></div></div>
+                        <div class="text-xs text-zinc-600">Be the first to contribute 🙏</div>
+                    </div>
                 </div>
-                <div class="bg-zinc-900 p-8 rounded-3xl">
-                    <div class="text-teal-400 text-sm">One-time</div>
-                    <div class="text-2xl font-medium mt-2">Design, Marketing &amp; Domain</div>
-                    <div class="text-4xl md:text-5xl font-bold text-teal-400 mt-6">$165–$435</div>
+
+                <!-- Paddle-Go funding breakdown -->
+                <div class="fund-card rounded-3xl p-8" style="border-color: rgba(245,158,11,0.15);">
+                    <div class="text-3xl mb-4">🛶</div>
+                    <div class="text-[#fbbf24] text-xs uppercase tracking-widest font-semibold mb-2">Paddle-Go</div>
+                    <div class="text-lg font-bold text-white mb-5" style="font-family: 'Syne', sans-serif;">Funding Used For</div>
+                    <ul class="space-y-3 text-sm text-zinc-400">
+                        <li class="flex items-start gap-3"><span class="text-[#fbbf24] mt-0.5 flex-shrink-0">→</span>Play Store submission & review fees</li>
+                        <li class="flex items-start gap-3"><span class="text-[#fbbf24] mt-0.5 flex-shrink-0">→</span>Open water & wind condition API access (Windy, OpenWeather)</li>
+                        <li class="flex items-start gap-3"><span class="text-[#fbbf24] mt-0.5 flex-shrink-0">→</span>Expo managed build credits for app compilation</li>
+                        <li class="flex items-start gap-3"><span class="text-[#fbbf24] mt-0.5 flex-shrink-0">→</span>TikTok & social media ad spend to reach paddlers</li>
+                        <li class="flex items-start gap-3"><span class="text-[#fbbf24] mt-0.5 flex-shrink-0">→</span>App listing graphic design & promo art</li>
+                    </ul>
+                    <div class="mt-6 pt-5 border-t" style="border-color: rgba(245,158,11,0.1);">
+                        <div class="text-xs text-zinc-500 mb-2">Contributions Received</div>
+                        <div class="contrib-bar mb-2"><div class="contrib-fill" style="width: 0%; background: linear-gradient(90deg, #fbbf24, #f59e0b);"></div></div>
+                        <div class="text-xs text-zinc-600">Be the first to contribute 🙏</div>
+                    </div>
+                </div>
+
+                <!-- DreamMapper funding breakdown -->
+                <div class="fund-card rounded-3xl p-8" style="border-color: rgba(124,58,237,0.15);">
+                    <div class="text-3xl mb-4">🌙</div>
+                    <div class="text-[#a78bfa] text-xs uppercase tracking-widest font-semibold mb-2">DreamMapper</div>
+                    <div class="text-lg font-bold text-white mb-5" style="font-family: 'Syne', sans-serif;">Funding Used For</div>
+                    <ul class="space-y-3 text-sm text-zinc-400">
+                        <li class="flex items-start gap-3"><span class="text-[#a78bfa] mt-0.5 flex-shrink-0">→</span>AI/LLM API credits for optional dream insight features</li>
+                        <li class="flex items-start gap-3"><span class="text-[#a78bfa] mt-0.5 flex-shrink-0">→</span>Cloud storage for dream journal entries & sketches</li>
+                        <li class="flex items-start gap-3"><span class="text-[#a78bfa] mt-0.5 flex-shrink-0">→</span>Play Store developer account & submission fees</li>
+                        <li class="flex items-start gap-3"><span class="text-[#a78bfa] mt-0.5 flex-shrink-0">→</span>Final testing device compatibility (multiple Android versions)</li>
+                        <li class="flex items-start gap-3"><span class="text-[#a78bfa] mt-0.5 flex-shrink-0">→</span>App icon, onboarding illustrations & UX polish</li>
+                    </ul>
+                    <div class="mt-6 pt-5 border-t" style="border-color: rgba(124,58,237,0.1);">
+                        <div class="text-xs text-zinc-500 mb-2">Contributions Received</div>
+                        <div class="contrib-bar mb-2"><div class="contrib-fill" style="width: 0%; background: linear-gradient(90deg, #a78bfa, #7c3aed);"></div></div>
+                        <div class="text-xs text-zinc-600">Be the first to contribute 🙏</div>
+                    </div>
                 </div>
             </div>
-            <p class="text-center text-zinc-400 mt-10 text-sm">Covers everything needed to get all three apps live and earning within 90 days</p>
+
+            <!-- General funding uses -->
+            <div class="rounded-3xl p-8 md:p-12" style="background: linear-gradient(135deg, #0d1117, #080c14); border: 1px solid rgba(0,245,212,0.1);">
+                <div class="text-center mb-10">
+                    <div class="text-[#00f5d4] text-xs uppercase tracking-widest font-semibold mb-3">Shared Across All Projects</div>
+                    <h3 style="font-family: 'Syne', sans-serif;" class="text-2xl font-bold text-white">Overall Launch Costs</h3>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style="background: rgba(0,245,212,0.1);">☁️</div>
+                        <div>
+                            <div class="font-semibold text-white text-sm mb-1">Cloud Infrastructure</div>
+                            <div class="text-zinc-500 text-sm">Appwrite Cloud for backend, database, and real-time data across all three apps — billed monthly as users grow.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style="background: rgba(0,245,212,0.1);">🔨</div>
+                        <div>
+                            <div class="font-semibold text-white text-sm mb-1">Build & Deploy Tooling</div>
+                            <div class="text-zinc-500 text-sm">Expo Application Services (EAS) manages native Android builds and over-the-air updates without manual compiling.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style="background: rgba(0,245,212,0.1);">📣</div>
+                        <div>
+                            <div class="font-semibold text-white text-sm mb-1">Marketing & Visibility</div>
+                            <div class="text-zinc-500 text-sm">Targeted social media ad spend, TikTok promotion, and community outreach to drive initial downloads and reviews.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg" style="background: rgba(0,245,212,0.1);">🌐</div>
+                        <div>
+                            <div class="font-semibold text-white text-sm mb-1">Domain & Hosting</div>
+                            <div class="text-zinc-500 text-sm">Custom domain registration and reliable hosting for this website and app landing pages to look professional to users.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3-month plan -->
+            <div class="mt-8 rounded-3xl p-6 md:p-8 text-center" style="background: rgba(0,245,212,0.04); border: 1px solid rgba(0,245,212,0.1);">
+                <div class="text-xs uppercase tracking-widest text-[#00f5d4] font-semibold mb-6">3-Month Launch Plan</div>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background: rgba(0,245,212,0.07);">
+                        <span class="text-[#00f5d4] font-bold text-lg" style="font-family: 'Syne', sans-serif;">01</span>
+                        <span class="text-sm text-zinc-300">Finalize & submit to Play Store</span>
+                    </div>
+                    <div class="hidden md:flex items-center text-zinc-700">→</div>
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background: rgba(0,245,212,0.07);">
+                        <span class="text-[#00f5d4] font-bold text-lg" style="font-family: 'Syne', sans-serif;">02</span>
+                        <span class="text-sm text-zinc-300">Closed & Open Testing</span>
+                    </div>
+                    <div class="hidden md:flex items-center text-zinc-700">→</div>
+                    <div class="flex items-center gap-3 px-5 py-3 rounded-2xl" style="background: rgba(0,245,212,0.07);">
+                        <span class="text-[#00f5d4] font-bold text-lg" style="font-family: 'Syne', sans-serif;">03</span>
+                        <span class="text-sm text-zinc-300">Public Release + Marketing</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- OVERALL PLAN -->
-        <div class="text-center mb-16">
-            <h3 class="text-teal-400 font-medium text-sm tracking-widest">3-MONTH PLAN</h3>
-            <div class="bg-zinc-900 rounded-3xl px-6 py-5 mt-6 text-sm flex flex-col md:flex-row md:gap-x-12 gap-y-3 md:gap-y-0 max-w-2xl mx-auto">
-                <div class="flex items-center gap-x-2"><span class="text-teal-400 font-bold">1</span> Month 1: Finalize &amp; submit to Play Store</div>
-                <div class="flex items-center gap-x-2"><span class="text-teal-400 font-bold">2</span> Month 2: Closed &amp; Open Testing</div>
-                <div class="flex items-center gap-x-2"><span class="text-teal-400 font-bold">3</span> Month 3: Public Release + Marketing</div>
+        <!-- ─── BETA TESTER FORM ─── -->
+        <section id="testers" class="mb-28 max-w-2xl mx-auto">
+            <div class="text-center mb-12">
+                <div class="section-divider mx-auto mb-6"></div>
+                <div class="badge badge-cyan mb-4 mx-auto" style="display: inline-flex;"><i class="fa-solid fa-users"></i> Want to be a Tester?</div>
+                <h2 style="font-family: 'Syne', sans-serif;" class="text-3xl md:text-4xl font-bold text-white mb-3">Help Test the Apps</h2>
+                <p class="text-zinc-400">Get early access + your name in the credits + <span class="text-[#00f5d4] font-medium">lifetime premium</span> across all three apps.</p>
             </div>
-        </div>
 
-        <!-- BETA TESTER -->
-        <section id="testers" class="mt-20 max-w-lg mx-auto">
-            <div class="text-center mb-10">
-                <div class="inline-flex items-center gap-x-2 bg-teal-500/10 text-teal-400 px-5 py-2 rounded-3xl text-sm font-medium">
-                    <i class="fa-solid fa-users"></i>
-                    WANT TO BE A TESTER?
-                </div>
-            </div>
-            <h2 class="text-2xl md:text-4xl font-semibold text-center mb-3">Help Test the Apps</h2>
-            <p class="text-zinc-400 text-center mb-10">Get early access + your name in the credits + <span class="text-teal-400 font-medium">lifetime premium membership</span> (all features unlocked forever) in RiverTracker, Paddle-Go, and DreamMapper.</p>
-         
-            <form action="https://formsubmit.co/anusb412@gmail.com" method="POST" class="bg-zinc-900 rounded-3xl p-8">
-                <input type="hidden" name="_subject" value="New Beta Tester Application - RiverTracker / Paddle-Go / DreamMapper">
+            <form action="https://formsubmit.co/anusb412@gmail.com" method="POST" class="rounded-3xl p-8 md:p-10" style="background: #0d1117; border: 1px solid rgba(255,255,255,0.08);">
+                <input type="hidden" name="_subject" value="New Beta Tester Application">
                 <input type="hidden" name="_captcha" value="false">
                 <div class="space-y-6">
                     <div>
-                        <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Full Name</label>
-                        <input type="text" name="name" required class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-teal-500">
+                        <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Full Name</label>
+                        <input type="text" name="name" required class="form-input w-full px-5 py-4 rounded-2xl text-white" placeholder="Your name">
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Email Address</label>
-                        <input type="email" name="email" required class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-teal-500">
+                        <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Email Address</label>
+                        <input type="email" name="email" required class="form-input w-full px-5 py-4 rounded-2xl text-white" placeholder="your@email.com">
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Android Device</label>
-                        <input type="text" name="device" placeholder="e.g. Samsung Galaxy S23, Pixel 8" required class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-teal-500">
+                        <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Android Device</label>
+                        <input type="text" name="device" required class="form-input w-full px-5 py-4 rounded-2xl text-white" placeholder="e.g. Samsung Galaxy S23, Pixel 8">
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Why do you want to test these apps?</label>
-                        <textarea name="why" rows="4" required placeholder="I'm an avid paddler / dreamer and want to help..." class="form-input w-full px-5 py-4 rounded-2xl text-white focus:outline-none focus:border-teal-500 resize-none"></textarea>
+                        <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Why do you want to test these apps?</label>
+                        <textarea name="why" rows="4" required class="form-input w-full px-5 py-4 rounded-2xl text-white resize-none" placeholder="I'm an avid paddler / dreamer and want to help..."></textarea>
                     </div>
                 </div>
-                <button type="submit" class="mt-8 w-full bg-teal-500 hover:bg-teal-600 transition-colors text-white font-semibold py-5 rounded-2xl text-lg">
+                <button type="submit" class="mt-8 w-full py-5 rounded-2xl font-bold text-lg text-[#020408] transition-all" style="background: linear-gradient(135deg, #00f5d4, #0ea5e9); box-shadow: 0 0 30px rgba(0,245,212,0.2);">
                     Submit Application
                 </button>
-                <p class="text-[10px] text-zinc-500 text-center mt-6">Your info will be emailed directly to Anthony • No spam ever</p>
+                <p class="text-[10px] text-zinc-600 text-center mt-4">Your info will be emailed directly to Anthony · No spam ever</p>
             </form>
         </section>
 
-        <!-- PRIVACY -->
-        <section id="privacy" class="max-w-2xl mx-auto bg-zinc-900 rounded-3xl p-10 text-sm mt-24">
-            <h2 class="text-3xl font-semibold mb-6">Privacy Policy</h2>
-            <p class="text-zinc-400 mb-6">We take your privacy seriously. These apps collect only the minimum data required to function.</p>
-            <ul class="space-y-4 text-zinc-400">
-                <li class="flex gap-x-3">✅ No personal account required for basic use</li>
-                <li class="flex gap-x-3">✅ Location used only for nearby spots (never stored)</li>
-                <li class="flex gap-x-3">✅ Ads shown via Google AdMob — no third-party tracking</li>
-                <li class="flex gap-x-3">✅ Premium unlocks processed anonymously</li>
-                <li class="flex gap-x-3">✅ We never sell or share your data</li>
-            </ul>
-            <p class="text-[10px] text-zinc-500 mt-10">Last updated March 2026 • Full policy available on request</p>
+        <!-- ─── PRIVACY ─── -->
+        <section id="privacy" class="mb-28 max-w-2xl mx-auto">
+            <div class="rounded-3xl p-8 md:p-12" style="background: #0d1117; border: 1px solid rgba(255,255,255,0.08);">
+                <div class="section-divider mb-6"></div>
+                <h2 style="font-family: 'Syne', sans-serif;" class="text-2xl font-bold text-white mb-2">Privacy Policy</h2>
+                <p class="text-zinc-500 text-sm mb-8">We take your privacy seriously. These apps collect only the minimum data required to function.</p>
+                <div class="space-y-4 text-sm">
+                    <div class="flex items-start gap-3 text-zinc-400"><span class="text-[#00f5d4]">✓</span> No personal account required for basic use</div>
+                    <div class="flex items-start gap-3 text-zinc-400"><span class="text-[#00f5d4]">✓</span> Location used only for nearby spots (never stored)</div>
+                    <div class="flex items-start gap-3 text-zinc-400"><span class="text-[#00f5d4]">✓</span> Ads shown via Google AdMob — no third-party tracking</div>
+                    <div class="flex items-start gap-3 text-zinc-400"><span class="text-[#00f5d4]">✓</span> Premium unlocks processed anonymously</div>
+                    <div class="flex items-start gap-3 text-zinc-400"><span class="text-[#00f5d4]">✓</span> We never sell or share your data</div>
+                </div>
+                <p class="text-[10px] text-zinc-600 mt-8">Last updated March 2026 · Full policy available on request</p>
+            </div>
         </section>
 
-        <!-- FUND CTA -->
-        <section id="fund" class="mt-24 text-center">
-            <h2 class="text-4xl font-semibold mb-4">Fund My Startup</h2>
-            <p class="text-zinc-400 mb-10 max-w-md mx-auto">Help me launch my independent app startup and get RiverTracker, Paddle-Go &amp; DreamMapper live on the Play Store ASAP. Any amount gets us closer to revenue!</p>
-         
-            <a href="https://buymeacoffee.com/anthonynusbaum"
-               target="_blank"
-               class="inline-flex items-center gap-x-3 bg-white hover:bg-teal-500 hover:text-white text-zinc-950 font-semibold text-lg md:text-2xl py-5 md:py-8 px-10 md:px-16 rounded-3xl shadow-2xl shadow-teal-500/20 transition-all">
-                Fund the Launch
-            </a>
-         
-            <p class="text-xs text-zinc-500 mt-8">Instant • Secure • Every dollar goes straight to launching the apps</p>
+        <!-- ─── FUND CTA ─── -->
+        <section id="fund" class="text-center py-20 relative overflow-hidden rounded-3xl" style="background: linear-gradient(135deg, #030810 0%, #0a1628 50%, #030810 100%); border: 1px solid rgba(0,245,212,0.1);">
+            <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,245,212,0.07) 0%, transparent 70%); pointer-events: none;"></div>
+            <div class="relative z-10 px-6">
+                <div class="text-6xl mb-6">🚀</div>
+                <h2 style="font-family: 'Syne', sans-serif;" class="text-4xl md:text-6xl font-bold text-white mb-4">Fund My Startup</h2>
+                <p class="text-zinc-400 mb-10 max-w-md mx-auto">Help me launch my independent app startup and get RiverTracker, Paddle-Go & DreamMapper live on the Play Store. Any amount gets us closer!</p>
+                <a href="https://buymeacoffee.com/anthonynusbaum" target="_blank"
+                   class="inline-flex items-center gap-3 px-12 py-6 rounded-2xl font-bold text-xl text-[#020408] transition-all hover:scale-105"
+                   style="background: linear-gradient(135deg, #00f5d4, #0ea5e9); box-shadow: 0 0 60px rgba(0,245,212,0.4);">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    Fund the Launch
+                </a>
+                <p class="text-xs text-zinc-600 mt-8">Instant · Secure · Every dollar goes straight to launching the apps</p>
+            </div>
         </section>
     </div>
 
     <!-- FOOTER -->
-    <footer class="bg-black py-12 border-t border-zinc-800 text-center text-xs text-zinc-500">
-        <div>Made by Anthony • Tempe, AZ • 2026</div>
-        <div class="mt-2">Hosted on GitHub Pages • Fully mobile responsive</div>
+    <footer class="border-t py-10 text-center text-xs text-zinc-600" style="border-color: rgba(255,255,255,0.06); background: #010204;">
+        <div style="font-family: 'Syne', sans-serif;" class="text-zinc-400 font-medium mb-1">Make It Right Design</div>
+        <div>Made by Anthony · Tempe, AZ · 2026</div>
+        <div class="mt-1">Hosted on GitHub Pages · Fully mobile responsive</div>
     </footer>
 
     <script>
+        // Stars
+        const starsEl = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const s = document.createElement('div');
+            s.className = 'star';
+            s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${3+Math.random()*5}s;--delay:${Math.random()*5}s;--op:${0.3+Math.random()*0.7};`;
+            starsEl.appendChild(s);
+        }
+
         // Mobile menu
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
-     
         hamburger.addEventListener('click', () => {
             if (mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.remove('hidden');
@@ -640,49 +746,21 @@
                 hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
             }
         });
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
+        mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
             });
         });
-        // Drag + wheel scroll for galleries
-        function enableDragScroll() {
-            document.querySelectorAll('.screenshot-gallery').forEach(gallery => {
-                let isDragging = false;
-                let startX;
-                let scrollLeftPos;
-                gallery.addEventListener('mousedown', (e) => {
-                    isDragging = true;
-                    startX = e.pageX - gallery.offsetLeft;
-                    scrollLeftPos = gallery.scrollLeft;
-                    gallery.style.cursor = 'grabbing';
-                });
-                gallery.addEventListener('mouseleave', () => {
-                    isDragging = false;
-                    gallery.style.cursor = 'grab';
-                });
-                gallery.addEventListener('mouseup', () => {
-                    isDragging = false;
-                    gallery.style.cursor = 'grab';
-                });
-                gallery.addEventListener('mousemove', (e) => {
-                    if (!isDragging) return;
-                    e.preventDefault();
-                    const x = e.pageX - gallery.offsetLeft;
-                    const walk = (x - startX) * 2.8;
-                    gallery.scrollLeft = scrollLeftPos - walk;
-                });
-                gallery.addEventListener('wheel', (e) => {
-                    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-                        e.preventDefault();
-                        gallery.scrollLeft += e.deltaY * 1.8;
-                    }
-                }, { passive: false });
-            });
-        }
-        window.addEventListener('load', enableDragScroll);
+
+        // Drag scroll
+        document.querySelectorAll('.screenshot-gallery').forEach(gallery => {
+            let isDragging = false, startX, scrollLeftPos;
+            gallery.addEventListener('mousedown', (e) => { isDragging = true; startX = e.pageX - gallery.offsetLeft; scrollLeftPos = gallery.scrollLeft; gallery.style.cursor = 'grabbing'; });
+            gallery.addEventListener('mouseleave', () => { isDragging = false; gallery.style.cursor = 'grab'; });
+            gallery.addEventListener('mouseup', () => { isDragging = false; gallery.style.cursor = 'grab'; });
+            gallery.addEventListener('mousemove', (e) => { if (!isDragging) return; e.preventDefault(); gallery.scrollLeft = scrollLeftPos - (e.pageX - gallery.offsetLeft - startX) * 2.5; });
+        });
     </script>
 </body>
 </html>
