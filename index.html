@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
-      
+     
         .hero-bg {
             background: linear-gradient(135deg, #0f172a 0%, #164e63 45%, #0f172a 100%);
             position: relative;
@@ -21,17 +21,17 @@
             background: radial-gradient(circle at 30% 20%, rgba(45, 212, 191, 0.08) 0%, transparent 70%);
             pointer-events: none;
         }
-      
+     
         .app-card {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.3);
         }
-      
+     
         .app-card:hover {
             transform: translateY(-12px);
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
         }
-      
+     
         .form-input {
             background: #18181b;
             border: 1px solid #3f3f46;
@@ -41,16 +41,16 @@
             border-color: #14b8a6;
             outline: none;
         }
-      
+     
         .mobile-menu {
             animation: slideDown 0.3s ease forwards;
         }
-      
+     
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-      
+     
         /* Vertical Timeline */
         .vertical-timeline {
             position: relative;
@@ -66,7 +66,7 @@
             background: linear-gradient(to bottom, #334155, #1e2937);
             border-radius: 9999px;
         }
-      
+     
         .timeline-step {
             position: relative;
             margin-bottom: 28px;
@@ -75,7 +75,7 @@
             gap: 16px;
         }
         .timeline-step:last-child { margin-bottom: 0; }
-      
+     
         .timeline-dot {
             width: 28px;
             height: 28px;
@@ -90,9 +90,9 @@
             transition: all 0.3s ease;
         }
         .timeline-dot.completed { background: #14b8a6; color: white; }
-        .timeline-dot.current { 
-            background: #14b8a6; 
-            color: white; 
+        .timeline-dot.current {
+            background: #14b8a6;
+            color: white;
             box-shadow: 0 0 0 5px rgba(20, 184, 166, 0.25);
         }
         .timeline-dot.pending {
@@ -100,8 +100,8 @@
             color: #64748b;
             border: 2px solid #3f3f46;
         }
-      
-        /* Screenshot Gallery - Desktop + Mobile Fixed */
+     
+        /* Screenshot Gallery */
         .screenshot-gallery {
             scrollbar-width: none;
             scroll-behavior: smooth;
@@ -111,7 +111,6 @@
         }
         .screenshot-gallery:active { cursor: grabbing; }
         .screenshot-gallery::-webkit-scrollbar { display: none; }
-
         @media (min-width: 768px) {
             .screenshot-gallery {
                 scrollbar-width: thin;
@@ -130,15 +129,12 @@
                 border-radius: 9999px;
             }
         }
-
         .screenshot-card {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .screenshot-card:hover {
             transform: scale(1.04);
         }
-
-        /* Premium Coming Soon Teaser */
         .coming-soon-teaser {
             background: linear-gradient(135deg, #1e2937, #0f172a);
             border: 2px dashed #334155;
@@ -146,22 +142,46 @@
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200 font-sans">
-    <!-- TOP NAV -->
+
+    <!-- CLEAN NAV WITH APPS DROPDOWN -->
     <nav class="bg-zinc-950 border-b border-zinc-800 fixed w-full z-50">
         <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
             <div class="flex items-center gap-x-3">
                 <div class="w-9 h-9 bg-teal-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">📱</div>
                 <span class="font-bold text-2xl tracking-tighter text-white">Make It Right Design</span>
             </div>
-          
+         
+            <!-- DESKTOP NAV -->
             <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                <a href="#apps" class="hover:text-teal-400 transition-colors">Apps</a>
-                <a href="#funding" class="hover:text-teal-400 transition-colors">Funding</a>
-                <a href="#testers" class="hover:text-teal-400 transition-colors">Testers</a>
-                <a href="#privacy" class="hover:text-teal-400 transition-colors font-medium">Privacy</a>
+                <a href="index.html" class="hover:text-teal-400 transition-colors">Home</a>
+                
+                <!-- APPS DROPDOWN -->
+                <div class="relative group">
+                    <button class="flex items-center gap-x-1 hover:text-teal-400 transition-colors">
+                        Apps
+                        <i class="fa-solid fa-chevron-down text-xs mt-px transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block pt-4 w-64">
+                        <div class="bg-zinc-900 rounded-3xl shadow-2xl py-5 border border-zinc-700 overflow-hidden">
+                            <a href="rivertracker.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors">
+                                🏞️ <span class="font-medium">RiverTracker</span>
+                            </a>
+                            <a href="paddlego.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors">
+                                🛶 <span class="font-medium">Paddle-Go</span>
+                            </a>
+                            <a href="dreammapper.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors">
+                                🌙 <span class="font-medium">DreamMapper</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="index.html#funding" class="hover:text-teal-400 transition-colors">Funding</a>
+                <a href="index.html#testers" class="hover:text-teal-400 transition-colors">Testers</a>
+                <a href="index.html#privacy" class="hover:text-teal-400 transition-colors font-medium">Privacy</a>
             </div>
-          
-            <a href="#fund"
+         
+            <a href="index.html#fund"
                class="hidden md:flex bg-white text-zinc-900 px-8 py-3.5 rounded-3xl font-semibold text-sm hover:bg-teal-500 hover:text-white items-center gap-x-2 transition-all">
                 Fund the Launch
             </a>
@@ -169,14 +189,26 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-        <!-- Mobile Menu -->
+
+        <!-- MOBILE MENU -->
         <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 mobile-menu">
             <div class="px-6 py-8 flex flex-col gap-y-6 text-sm font-medium">
-                <a href="#apps" class="hover:text-teal-400 transition-colors py-2">Apps</a>
-                <a href="#funding" class="hover:text-teal-400 transition-colors py-2">Funding</a>
-                <a href="#testers" class="hover:text-teal-400 transition-colors py-2">Testers</a>
-                <a href="#privacy" class="hover:text-teal-400 transition-colors py-2">Privacy</a>
-                <a href="#fund" class="bg-white text-zinc-900 px-8 py-5 rounded-3xl font-semibold flex items-center justify-center gap-x-2">
+                <a href="index.html" class="hover:text-teal-400 transition-colors py-2">Home</a>
+                
+                <div class="border-t border-zinc-800 pt-6">
+                    <div class="text-teal-400 font-medium mb-4 flex items-center gap-x-2">
+                        <span>Apps</span>
+                    </div>
+                    <a href="rivertracker.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors">🏞️ RiverTracker</a>
+                    <a href="paddlego.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors">🛶 Paddle-Go</a>
+                    <a href="dreammapper.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors">🌙 DreamMapper</a>
+                </div>
+                
+                <a href="index.html#funding" class="hover:text-teal-400 transition-colors py-2">Funding</a>
+                <a href="index.html#testers" class="hover:text-teal-400 transition-colors py-2">Testers</a>
+                <a href="index.html#privacy" class="hover:text-teal-400 transition-colors py-2">Privacy</a>
+                
+                <a href="index.html#fund" class="bg-white text-zinc-900 px-8 py-5 rounded-3xl font-semibold flex items-center justify-center gap-x-2 mt-4">
                     Fund the Launch
                 </a>
             </div>
@@ -196,7 +228,23 @@
                 RiverTracker, Paddle-Go &amp; DreamMapper — practical tools for Android.<br>
                 Built by Anthony • Tempe, AZ
             </p>
-            <a href="#fund"
+            
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <a href="rivertracker.html" 
+                   class="bg-white/10 hover:bg-white/20 backdrop-blur-md px-8 py-3.5 rounded-3xl font-medium flex items-center gap-x-2 transition-all border border-white/10">
+                    🏞️ RiverTracker
+                </a>
+                <a href="paddlego.html" 
+                   class="bg-white/10 hover:bg-white/20 backdrop-blur-md px-8 py-3.5 rounded-3xl font-medium flex items-center gap-x-2 transition-all border border-white/10">
+                    🛶 Paddle-Go
+                </a>
+                <a href="dreammapper.html" 
+                   class="bg-white/10 hover:bg-white/20 backdrop-blur-md px-8 py-3.5 rounded-3xl font-medium flex items-center gap-x-2 transition-all border border-white/10">
+                    🌙 DreamMapper
+                </a>
+            </div>
+
+            <a href="index.html#fund"
                class="mt-12 bg-teal-500 hover:bg-teal-600 px-12 py-5 rounded-3xl font-semibold text-lg inline-flex items-center gap-x-2 transition-all shadow-xl shadow-teal-500/20">
                 Fund the Launch
             </a>
@@ -208,276 +256,269 @@
         <section id="apps" class="mb-24">
             <h2 class="text-4xl font-semibold mb-4 text-center">Apps Currently in Production</h2>
             <p class="text-zinc-400 text-center mb-12">All include ads + premium unlocks</p>
-          
+         
             <!-- 1. RIVERTRACKER -->
-            <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
-                <div class="p-8 md:flex gap-10">
-                    <div class="md:w-1/2">
-                        <div class="flex items-center gap-x-4 mb-6">
-                            <div class="text-6xl">🏞️</div>
-                            <div>
-                                <div class="text-teal-400 text-sm font-medium">NOW IN PRODUCTION</div>
-                                <div class="text-4xl font-semibold">RiverTracker</div>
+            <a href="rivertracker.html" class="block">
+                <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
+                    <div class="p-8 md:flex gap-10">
+                        <div class="md:w-1/2">
+                            <div class="flex items-center gap-x-4 mb-6">
+                                <div class="text-6xl">🏞️</div>
+                                <div>
+                                    <div class="text-teal-400 text-sm font-medium">NOW IN PRODUCTION</div>
+                                    <div class="text-4xl font-semibold">RiverTracker</div>
+                                </div>
+                            </div>
+                            <p class="text-zinc-300 text-lg leading-relaxed">
+                                Track river conditions and water levels, view real-time river flow data, explore nearby spots, and get map-based navigation for paddlers and anglers.
+                            </p>
+                            <div class="mt-8">
+                                <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
+                                <div class="text-sm space-y-2">
+                                    <div>• Real-time water levels &amp; flow data</div>
+                                    <div>• Nearby river spot explorer</div>
+                                    <div>• Map navigation for paddlers &amp; anglers</div>
+                                </div>
+                            </div>
+                            <div class="mt-8 text-sm text-zinc-400">
+                                Premium data unlocks for $2.99 • Ads at bottom
                             </div>
                         </div>
-                        <p class="text-zinc-300 text-lg leading-relaxed">
-                            Track river conditions and water levels, view real-time river flow data, explore nearby spots, and get map-based navigation for paddlers and anglers.
-                        </p>
-                        <div class="mt-8">
-                            <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
-                            <div class="text-sm space-y-2">
-                                <div>• Real-time water levels &amp; flow data</div>
-                                <div>• Nearby river spot explorer</div>
-                                <div>• Map navigation for paddlers &amp; anglers</div>
+                        <div class="md:w-1/2 mt-10 md:mt-0">
+                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
+                            <div class="vertical-timeline">
+                                <div class="timeline-step">
+                                    <div class="timeline-dot completed">1</div>
+                                    <div class="timeline-label text-zinc-400">Idea</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot completed">2</div>
+                                    <div class="timeline-label text-zinc-400">Development</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot completed">3</div>
+                                    <div class="timeline-label text-zinc-400">Adding to Store</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot current">4</div>
+                                    <div class="timeline-label font-semibold text-white">Closed Testing</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot pending">5</div>
+                                    <div class="timeline-label text-zinc-500">Open Testing</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot pending">6</div>
+                                    <div class="timeline-label text-zinc-500">Final Release</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mt-8 text-sm text-zinc-400">
-                            Premium data unlocks for $2.99 • Ads at bottom
                         </div>
                     </div>
-                  
-                    <!-- VERTICAL TIMELINE -->
-                    <div class="md:w-1/2 mt-10 md:mt-0">
-                        <div class="text-xs uppercase tracking-widest text-teal-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
-                        <div class="vertical-timeline">
-                            <div class="timeline-step">
-                                <div class="timeline-dot completed">1</div>
-                                <div class="timeline-label text-zinc-400">Idea</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot completed">2</div>
-                                <div class="timeline-label text-zinc-400">Development</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot completed">3</div>
-                                <div class="timeline-label text-zinc-400">Adding to Store</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot current">4</div>
-                                <div class="timeline-label font-semibold text-white">Closed Testing</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot pending">5</div>
-                                <div class="timeline-label text-zinc-500">Open Testing</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot pending">6</div>
-                                <div class="timeline-label text-zinc-500">Final Release</div>
+                    <div class="px-8 pb-10 border-t border-zinc-800">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">RIVERTRACKER SCREENSHOTS</div>
+                            <div class="text-xs text-zinc-500 flex items-center gap-x-1">
+                                <span class="hidden md:inline">Drag to explore</span>
+                                <span class="md:hidden">Swipe to explore</span>
+                                <i class="fa-solid fa-arrows-left-right"></i>
                             </div>
                         </div>
+                        <div class="screenshot-gallery flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory">
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt111.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt222.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt333.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt1.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt2.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt3.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt4.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt5.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        </div>
+                        <p class="text-[10px] text-center text-zinc-500 mt-3">All screenshots are real in-app views • Phone-sized for perfect mobile preview</p>
                     </div>
                 </div>
-                <!-- SCREENSHOT GALLERY - RIVERTRACKER -->
-                <div class="px-8 pb-10 border-t border-zinc-800">
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">RIVERTRACKER SCREENSHOTS</div>
-                        <div class="text-xs text-zinc-500 flex items-center gap-x-1">
-                            <span class="hidden md:inline">Drag to explore</span>
-                            <span class="md:hidden">Swipe to explore</span>
-                            <i class="fa-solid fa-arrows-left-right"></i>
-                        </div>
-                    </div>
-                    <div class="screenshot-gallery flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory">
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt111.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt222.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt333.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt1.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt2.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt3.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt4.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/rt5.png" alt="RiverTracker Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                    </div>
-                    <p class="text-[10px] text-center text-zinc-500 mt-3">All screenshots are real in-app views • Phone-sized for perfect mobile preview</p>
-                </div>
-            </div>
+            </a>
 
             <!-- 2. PADDLE-GO -->
-            <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
-                <div class="p-8 md:flex gap-10">
-                    <div class="md:w-1/2">
-                        <div class="flex items-center gap-x-4 mb-6">
-                            <div class="text-6xl">🛶</div>
+            <a href="paddlego.html" class="block">
+                <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden mb-12">
+                    <div class="p-8 md:flex gap-10">
+                        <div class="md:w-1/2">
+                            <div class="flex items-center gap-x-4 mb-6">
+                                <div class="text-6xl">🛶</div>
+                                <div>
+                                    <div class="text-teal-400 text-sm font-medium">NOW IN PRODUCTION</div>
+                                    <div class="text-4xl font-semibold">Paddle-Go</div>
+                                </div>
+                            </div>
+                            <p class="text-zinc-300 text-lg leading-relaxed">
+                                Discover paddleboarding spots, check real-time conditions, track your sessions, and connect with the paddling community.
+                            </p>
+                            <div class="mt-8">
+                                <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
+                                <div class="grid grid-cols-2 gap-3 text-sm">
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">✨</span> Find spots</div>
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🌊</span> Live conditions</div>
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">💨</span> Wind &amp; weather</div>
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🗺️</span> GPS launch points</div>
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">⚠️</span> Safety data</div>
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">💬</span> Community tips</div>
+                                </div>
+                            </div>
+                            <div class="mt-8 text-sm text-zinc-400">
+                                Premium data unlocks for $2.99 per spot • Ads at bottom
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 mt-10 md:mt-0">
+                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
+                            <div class="vertical-timeline">
+                                <div class="timeline-step">
+                                    <div class="timeline-dot completed">1</div>
+                                    <div class="timeline-label text-zinc-400">Idea</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot completed">2</div>
+                                    <div class="timeline-label text-zinc-400">Development</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot current">3</div>
+                                    <div class="timeline-label font-semibold text-white">Adding to Store</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot pending">4</div>
+                                    <div class="timeline-label text-zinc-500">Closed Testing</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot pending">5</div>
+                                    <div class="timeline-label text-zinc-500">Open Testing</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot pending">6</div>
+                                    <div class="timeline-label text-zinc-500">Final Release</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-8 pt-8 border-t border-zinc-800">
+                        <div class="flex items-center justify-between mb-6">
                             <div>
-                                <div class="text-teal-400 text-sm font-medium">NOW IN PRODUCTION</div>
-                                <div class="text-4xl font-semibold">Paddle-Go</div>
+                                <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">LIVE ADVERTISEMENT</div>
+                                <div class="text-lg font-semibold text-white">Paddle-Go Promo Video</div>
                             </div>
+                            <div class="px-4 py-1 bg-teal-500/10 text-teal-400 text-xs font-medium rounded-2xl">NEW</div>
                         </div>
-                        <p class="text-zinc-300 text-lg leading-relaxed">
-                            Discover paddleboarding spots, check real-time conditions, track your sessions, and connect with the paddling community.
-                        </p>
-                        <div class="mt-8">
-                            <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
-                            <div class="grid grid-cols-2 gap-3 text-sm">
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">✨</span> Find spots</div>
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">🌊</span> Live conditions</div>
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">💨</span> Wind &amp; weather</div>
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">🗺️</span> GPS launch points</div>
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">⚠️</span> Safety data</div>
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">💬</span> Community tips</div>
-                            </div>
+                        <div class="max-w-md mx-auto">
+                            <a href="https://www.tiktok.com/@jaggedop/video/7615032395443555597"
+                               target="_blank"
+                               class="group flex flex-col items-center justify-center bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-teal-500 rounded-3xl px-8 py-10 text-center transition-all">
+                                <div class="w-16 h-16 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-play text-4xl text-teal-400"></i>
+                                </div>
+                                <div class="font-semibold text-xl text-white">Watch the 14-second Live Ad</div>
+                                <div class="text-zinc-400 mt-1">Official Paddle-Go promo on TikTok</div>
+                                <div class="mt-6 text-xs uppercase tracking-widest bg-black px-5 py-2 rounded-full border border-zinc-700 text-teal-400 flex items-center gap-x-2">
+                                    <span>Opens in new tab</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </div>
+                            </a>
                         </div>
-                        <div class="mt-8 text-sm text-zinc-400">
-                            Premium data unlocks for $2.99 per spot • Ads at bottom
-                        </div>
+                        <p class="text-center text-[10px] text-zinc-500 mt-6">Real footage • No autoplay • Click to view</p>
                     </div>
-                  
-                    <!-- VERTICAL TIMELINE -->
-                    <div class="md:w-1/2 mt-10 md:mt-0">
-                        <div class="text-xs uppercase tracking-widest text-teal-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
-                        <div class="vertical-timeline">
-                            <div class="timeline-step">
-                                <div class="timeline-dot completed">1</div>
-                                <div class="timeline-label text-zinc-400">Idea</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot completed">2</div>
-                                <div class="timeline-label text-zinc-400">Development</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot current">3</div>
-                                <div class="timeline-label font-semibold text-white">Adding to Store</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot pending">4</div>
-                                <div class="timeline-label text-zinc-500">Closed Testing</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot pending">5</div>
-                                <div class="timeline-label text-zinc-500">Open Testing</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot pending">6</div>
-                                <div class="timeline-label text-zinc-500">Final Release</div>
+                    <div class="px-8 pb-10 border-t border-zinc-800">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">PADDLE-GO SCREENSHOTS</div>
+                            <div class="text-xs text-zinc-500 flex items-center gap-x-1">
+                                <span class="hidden md:inline">Drag to explore</span>
+                                <span class="md:hidden">Swipe to explore</span>
+                                <i class="fa-solid fa-arrows-left-right"></i>
                             </div>
                         </div>
+                        <div class="screenshot-gallery flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory">
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg555.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg444.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg333.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg1.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg2.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                            <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg3.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
+                        </div>
+                        <p class="text-[10px] text-center text-zinc-500 mt-3">All screenshots are real in-app views • Phone-sized for perfect mobile preview</p>
                     </div>
                 </div>
+            </a>
 
-                <!-- LIVE ADVERTISEMENT LINK (UPDATED) -->
-                <div class="px-8 pb-8 pt-8 border-t border-zinc-800">
-                    <div class="flex items-center justify-between mb-6">
-                        <div>
-                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">LIVE ADVERTISEMENT</div>
-                            <div class="text-lg font-semibold text-white">Paddle-Go Promo Video</div>
-                        </div>
-                        <div class="px-4 py-1 bg-teal-500/10 text-teal-400 text-xs font-medium rounded-2xl">NEW</div>
-                    </div>
-                    
-                    <div class="max-w-md mx-auto">
-                        <a href="https://www.tiktok.com/@jaggedop/video/7614904761309056269" 
-                           target="_blank"
-                           class="group flex flex-col items-center justify-center bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-teal-500 rounded-3xl px-8 py-10 text-center transition-all">
-                            <div class="w-16 h-16 bg-teal-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-play text-4xl text-teal-400"></i>
+            <!-- 3. DREAMMAPPER -->
+            <a href="dreammapper.html" class="block">
+                <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden">
+                    <div class="p-8 md:flex gap-10">
+                        <div class="md:w-1/2">
+                            <div class="flex items-center gap-x-4 mb-6">
+                                <div class="text-6xl">🌙</div>
+                                <div>
+                                    <div class="text-teal-400 text-sm font-medium">COMING SOON</div>
+                                    <div class="text-4xl font-semibold">DreamMapper</div>
+                                </div>
                             </div>
-                            <div class="font-semibold text-xl text-white">Watch the 14-second Live Ad</div>
-                            <div class="text-zinc-400 mt-1">Official Paddle-Go promo on TikTok</div>
-                            <div class="mt-6 text-xs uppercase tracking-widest bg-black px-5 py-2 rounded-full border border-zinc-700 text-teal-400 flex items-center gap-x-2">
-                                <span>Opens in new tab</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            <p class="text-zinc-300 text-lg leading-relaxed">
+                                Wake up and instantly record your dreams with text, voice, or sketches. View your dream history, get smart summaries, discover hidden connections, and track patterns in your subconscious.
+                            </p>
+                            <div class="mt-8">
+                                <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
+                                <div class="grid grid-cols-2 gap-3 text-sm">
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">📝</span> Dream logging</div>
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">✍️</span> Sketch &amp; draw</div>
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">📊</span> Dream history</div>
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🔗</span> Smart connections</div>
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">📈</span> Pattern tracking</div>
+                                    <div class="flex items-center gap-x-2"><span class="text-teal-400">🤖</span> AI insights (optional)</div>
+                                </div>
                             </div>
-                        </a>
-                    </div>
-                    <p class="text-center text-[10px] text-zinc-500 mt-6">Real footage • No autoplay • Click to view</p>
-                </div>
-
-                <!-- SCREENSHOT GALLERY - PADDLE-GO -->
-                <div class="px-8 pb-10 border-t border-zinc-800">
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">PADDLE-GO SCREENSHOTS</div>
-                        <div class="text-xs text-zinc-500 flex items-center gap-x-1">
-                            <span class="hidden md:inline">Drag to explore</span>
-                            <span class="md:hidden">Swipe to explore</span>
-                            <i class="fa-solid fa-arrows-left-right"></i>
-                        </div>
-                    </div>
-                    <div class="screenshot-gallery flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory">
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg555.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg444.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg333.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg1.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg2.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                        <div class="flex-shrink-0 w-32 md:w-48 snap-center screenshot-card"><img src="assets/pg3.png" alt="Paddle-Go Screenshot" class="w-full rounded-3xl shadow-2xl border border-zinc-700"></div>
-                    </div>
-                    <p class="text-[10px] text-center text-zinc-500 mt-3">All screenshots are real in-app views • Phone-sized for perfect mobile preview</p>
-                </div>
-            </div>
-
-            <!-- 3. DREAMMAPPER - COMING SOON -->
-            <div class="app-card bg-zinc-900 rounded-3xl overflow-hidden">
-                <div class="p-8 md:flex gap-10">
-                    <div class="md:w-1/2">
-                        <div class="flex items-center gap-x-4 mb-6">
-                            <div class="text-6xl">🌙</div>
-                            <div>
-                                <div class="text-teal-400 text-sm font-medium">COMING SOON</div>
-                                <div class="text-4xl font-semibold">DreamMapper</div>
+                            <div class="mt-8 text-sm text-zinc-400">
+                                Premium responses &amp; features for $4.99 one-time • Ads at bottom
                             </div>
                         </div>
-                        <p class="text-zinc-300 text-lg leading-relaxed">
-                            Wake up and instantly record your dreams with text, voice, or sketches. View your dream history, get smart summaries, discover hidden connections, and track patterns in your subconscious.
-                        </p>
-                        <div class="mt-8">
-                            <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Key Features</div>
-                            <div class="grid grid-cols-2 gap-3 text-sm">
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">📝</span> Dream logging</div>
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">✍️</span> Sketch &amp; draw</div>
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">📊</span> Dream history</div>
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">🔗</span> Smart connections</div>
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">📈</span> Pattern tracking</div>
-                                <div class="flex items-center gap-x-2"><span class="text-teal-400">🤖</span> AI insights (optional)</div>
+                        <div class="md:w-1/2 mt-10 md:mt-0">
+                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
+                            <div class="vertical-timeline">
+                                <div class="timeline-step">
+                                    <div class="timeline-dot completed">1</div>
+                                    <div class="timeline-label text-zinc-400">Idea</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot current">2</div>
+                                    <div class="timeline-label font-semibold text-white">Development</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot pending">3</div>
+                                    <div class="timeline-label text-zinc-500">Adding to Store</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot pending">4</div>
+                                    <div class="timeline-label text-zinc-500">Closed Testing</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot pending">5</div>
+                                    <div class="timeline-label text-zinc-500">Open Testing</div>
+                                </div>
+                                <div class="timeline-step">
+                                    <div class="timeline-dot pending">6</div>
+                                    <div class="timeline-label text-zinc-500">Final Release</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mt-8 text-sm text-zinc-400">
-                            Premium responses &amp; features for $4.99 one-time • Ads at bottom
                         </div>
                     </div>
-                  
-                    <!-- VERTICAL TIMELINE -->
-                    <div class="md:w-1/2 mt-10 md:mt-0">
-                        <div class="text-xs uppercase tracking-widest text-teal-400 font-medium mb-6">DEVELOPMENT PROGRESS</div>
-                        <div class="vertical-timeline">
-                            <div class="timeline-step">
-                                <div class="timeline-dot completed">1</div>
-                                <div class="timeline-label text-zinc-400">Idea</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot current">2</div>
-                                <div class="timeline-label font-semibold text-white">Development</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot pending">3</div>
-                                <div class="timeline-label text-zinc-500">Adding to Store</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot pending">4</div>
-                                <div class="timeline-label text-zinc-500">Closed Testing</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot pending">5</div>
-                                <div class="timeline-label text-zinc-500">Open Testing</div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-dot pending">6</div>
-                                <div class="timeline-label text-zinc-500">Final Release</div>
-                            </div>
+                    <div class="px-8 pb-10 border-t border-zinc-800">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">DREAMMAPPER SCREENSHOTS</div>
+                            <div class="px-4 py-1 bg-teal-500/10 text-teal-400 text-xs font-medium rounded-2xl">COMING SOON</div>
+                        </div>
+                        <div class="coming-soon-teaser rounded-3xl p-12 flex flex-col items-center justify-center text-center min-h-[280px]">
+                            <div class="text-7xl mb-6">🌙</div>
+                            <div class="text-3xl font-semibold text-white mb-2">DreamMapper is coming soon!</div>
+                            <div class="text-zinc-400 max-w-xs">Screenshots and live demo arriving shortly. Be one of the first to test it.</div>
+                            <div class="mt-8 text-[10px] text-zinc-500">Your name can be in the credits if you join the beta list below 👇</div>
                         </div>
                     </div>
                 </div>
-                <!-- COMING SOON PLACEHOLDER -->
-                <div class="px-8 pb-10 border-t border-zinc-800">
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="text-xs uppercase tracking-widest text-teal-400 font-medium">DREAMMAPPER SCREENSHOTS</div>
-                        <div class="px-4 py-1 bg-teal-500/10 text-teal-400 text-xs font-medium rounded-2xl">COMING SOON</div>
-                    </div>
-                    <div class="coming-soon-teaser rounded-3xl p-12 flex flex-col items-center justify-center text-center min-h-[280px]">
-                        <div class="text-7xl mb-6">🌙</div>
-                        <div class="text-3xl font-semibold text-white mb-2">DreamMapper is coming soon!</div>
-                        <div class="text-zinc-400 max-w-xs">Screenshots and live demo arriving shortly. Be one of the first to test it.</div>
-                        <div class="mt-8 text-[10px] text-zinc-500">Your name can be in the credits if you join the beta list below 👇</div>
-                    </div>
-                </div>
-            </div>
+            </a>
         </section>
 
         <!-- FUNDING -->
@@ -518,7 +559,7 @@
             </div>
             <h2 class="text-4xl font-semibold text-center mb-3">Help Test the Apps</h2>
             <p class="text-zinc-400 text-center mb-10">Get early access + your name in the credits + <span class="text-teal-400 font-medium">lifetime premium membership</span> (all features unlocked forever) in RiverTracker, Paddle-Go, and DreamMapper.</p>
-          
+         
             <form action="https://formsubmit.co/anusb412@gmail.com" method="POST" class="bg-zinc-900 rounded-3xl p-8">
                 <input type="hidden" name="_subject" value="New Beta Tester Application - RiverTracker / Paddle-Go / DreamMapper">
                 <input type="hidden" name="_captcha" value="false">
@@ -565,20 +606,20 @@
         <section id="fund" class="mt-24 text-center">
             <h2 class="text-4xl font-semibold mb-4">Fund My Startup</h2>
             <p class="text-zinc-400 mb-10 max-w-md mx-auto">Help me launch my independent app startup and get RiverTracker, Paddle-Go &amp; DreamMapper live on the Play Store ASAP. Any amount gets us closer to revenue!</p>
-          
+         
             <a href="https://buymeacoffee.com/anthonynusbaum"
                target="_blank"
                class="inline-flex items-center gap-x-3 bg-white hover:bg-teal-500 hover:text-white text-zinc-950 font-semibold text-2xl py-8 px-16 rounded-3xl shadow-2xl shadow-teal-500/20 transition-all">
                 Fund the Launch
             </a>
-          
+         
             <p class="text-xs text-zinc-500 mt-8">Instant • Secure • Every dollar goes straight to launching the apps</p>
         </section>
     </div>
 
     <!-- FOOTER -->
     <footer class="bg-black py-12 border-t border-zinc-800 text-center text-xs text-zinc-500">
-        <div>Made by Anthony • Mesa, AZ • 2026</div>
+        <div>Made by Anthony • Tempe, AZ • 2026</div>
         <div class="mt-2">Hosted on GitHub Pages • Fully mobile responsive</div>
     </footer>
 
@@ -586,7 +627,7 @@
         // Mobile menu
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
-      
+     
         hamburger.addEventListener('click', () => {
             if (mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.remove('hidden');
@@ -603,31 +644,26 @@
                 hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
             });
         });
-
         // Drag + wheel scroll for galleries
         function enableDragScroll() {
             document.querySelectorAll('.screenshot-gallery').forEach(gallery => {
                 let isDragging = false;
                 let startX;
                 let scrollLeftPos;
-
                 gallery.addEventListener('mousedown', (e) => {
                     isDragging = true;
                     startX = e.pageX - gallery.offsetLeft;
                     scrollLeftPos = gallery.scrollLeft;
                     gallery.style.cursor = 'grabbing';
                 });
-
                 gallery.addEventListener('mouseleave', () => {
                     isDragging = false;
                     gallery.style.cursor = 'grab';
                 });
-
                 gallery.addEventListener('mouseup', () => {
                     isDragging = false;
                     gallery.style.cursor = 'grab';
                 });
-
                 gallery.addEventListener('mousemove', (e) => {
                     if (!isDragging) return;
                     e.preventDefault();
@@ -635,7 +671,6 @@
                     const walk = (x - startX) * 2.8;
                     gallery.scrollLeft = scrollLeftPos - walk;
                 });
-
                 gallery.addEventListener('wheel', (e) => {
                     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
                         e.preventDefault();
@@ -644,7 +679,6 @@
                 }, { passive: false });
             });
         }
-
         window.addEventListener('load', enableDragScroll);
     </script>
 </body>

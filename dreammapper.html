@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamMapper • Make It Right Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+     
+        .dream-hero {
+            background: linear-gradient(135deg, #4c1d95 0%, #6b21a8 45%, #2e1065 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .dream-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(192, 132, 252, 0.12) 0%, transparent 70%);
+        }
+     
+        .dream-accent { color: #c084fc; }
+        .dream-dot {
+            background: #c084fc;
+            color: #2e1065;
+            box-shadow: 0 0 0 6px rgba(192, 132, 252, 0.3);
+        }
+     
+        .app-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.3);
+        }
+        .app-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+     
+        .mobile-menu {
+            animation: slideDown 0.3s ease forwards;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+     
+        .vertical-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        .vertical-timeline::before {
+            content: '';
+            position: absolute;
+            left: 17px;
+            top: 8px;
+            bottom: 8px;
+            width: 4px;
+            background: linear-gradient(to bottom, #334155, #1e2937);
+            border-radius: 9999px;
+        }
+     
+        .timeline-step {
+            position: relative;
+            margin-bottom: 36px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+     
+        .timeline-dot {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+     
+        .screenshot-gallery {
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            cursor: grab;
+            user-select: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .screenshot-gallery:active { cursor: grabbing; }
+        .screenshot-gallery::-webkit-scrollbar { display: none; }
+     
+        .coming-soon-teaser {
+            background: linear-gradient(135deg, #1e2937, #0f172a);
+            border: 2px dashed #334155;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200 font-sans">
+
+    <!-- CLEAN NAV WITH APPS DROPDOWN -->
+    <nav class="bg-zinc-950 border-b border-zinc-800 fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-teal-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">📱</div>
+                <span class="font-bold text-2xl tracking-tighter text-white">Make It Right Design</span>
+            </div>
+         
+            <!-- DESKTOP NAV -->
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="index.html" class="hover:text-teal-400 transition-colors">Home</a>
+                
+                <!-- APPS DROPDOWN -->
+                <div class="relative group">
+                    <button class="flex items-center gap-x-1 hover:text-teal-400 transition-colors">
+                        Apps
+                        <i class="fa-solid fa-chevron-down text-xs mt-px transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block pt-4 w-64">
+                        <div class="bg-zinc-900 rounded-3xl shadow-2xl py-5 border border-zinc-700 overflow-hidden">
+                            <a href="rivertracker.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors">
+                                🏞️ <span class="font-medium">RiverTracker</span>
+                            </a>
+                            <a href="paddlego.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors">
+                                🛶 <span class="font-medium">Paddle-Go</span>
+                            </a>
+                            <a href="dreammapper.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors bg-zinc-800">
+                                🌙 <span class="font-medium text-[#c084fc]">DreamMapper</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="index.html#funding" class="hover:text-teal-400 transition-colors">Funding</a>
+                <a href="index.html#testers" class="hover:text-teal-400 transition-colors">Testers</a>
+                <a href="index.html#privacy" class="hover:text-teal-400 transition-colors font-medium">Privacy</a>
+            </div>
+         
+            <a href="index.html#fund"
+               class="hidden md:flex bg-white text-zinc-900 px-8 py-3.5 rounded-3xl font-semibold text-sm hover:bg-teal-500 hover:text-white items-center gap-x-2 transition-all">
+                Fund the Launch
+            </a>
+            <button id="hamburger" class="md:hidden text-3xl text-white">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 mobile-menu">
+            <div class="px-6 py-8 flex flex-col gap-y-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-teal-400 transition-colors py-2">Home</a>
+                
+                <div class="border-t border-zinc-800 pt-6">
+                    <div class="text-teal-400 font-medium mb-4 flex items-center gap-x-2">
+                        <span>Apps</span>
+                    </div>
+                    <a href="rivertracker.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors">🏞️ RiverTracker</a>
+                    <a href="paddlego.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors">🛶 Paddle-Go</a>
+                    <a href="dreammapper.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors text-[#c084fc]">🌙 DreamMapper</a>
+                </div>
+                
+                <a href="index.html#funding" class="hover:text-teal-400 transition-colors py-2">Funding</a>
+                <a href="index.html#testers" class="hover:text-teal-400 transition-colors py-2">Testers</a>
+                <a href="index.html#privacy" class="hover:text-teal-400 transition-colors py-2">Privacy</a>
+                
+                <a href="index.html#fund" class="bg-white text-zinc-900 px-8 py-5 rounded-3xl font-semibold flex items-center justify-center gap-x-2 mt-4">
+                    Fund the Launch
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- DREAMMAPPER DEDICATED HERO -->
+    <header class="dream-hero pt-28 md:pt-32 pb-20 text-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-x-4 mb-8">
+                <div class="text-8xl">🌙</div>
+                <div>
+                    <div class="text-[#c084fc] text-sm font-medium tracking-widest">IN DEVELOPMENT</div>
+                    <h1 class="text-6xl md:text-7xl font-bold tracking-tighter">DreamMapper</h1>
+                </div>
+            </div>
+            <p class="text-2xl text-purple-200 max-w-2xl mx-auto">
+                Wake up and instantly record your dreams. Text, voice, sketches — then uncover patterns in your subconscious.
+            </p>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 py-16">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+            <div>
+                <p class="text-xl text-zinc-300 leading-relaxed">
+                    Wake up and instantly record your dreams with text, voice, or sketches. View your dream history, get smart summaries, discover hidden connections, and track patterns in your subconscious.
+                </p>
+                <div class="mt-12">
+                    <div class="text-xs uppercase tracking-widest text-zinc-500 mb-4">KEY FEATURES</div>
+                    <div class="grid grid-cols-2 gap-6 text-lg">
+                        <div class="flex items-center gap-x-3 dream-accent"><span class="text-3xl">📝</span> Dream logging</div>
+                        <div class="flex items-center gap-x-3 dream-accent"><span class="text-3xl">✍️</span> Sketch &amp; draw</div>
+                        <div class="flex items-center gap-x-3 dream-accent"><span class="text-3xl">📊</span> Dream history</div>
+                        <div class="flex items-center gap-x-3 dream-accent"><span class="text-3xl">🔗</span> Smart connections</div>
+                        <div class="flex items-center gap-x-3 dream-accent"><span class="text-3xl">📈</span> Pattern tracking</div>
+                        <div class="flex items-center gap-x-3 dream-accent"><span class="text-3xl">🤖</span> AI insights (optional)</div>
+                    </div>
+                </div>
+                <div class="mt-12 bg-zinc-900 rounded-3xl p-8 text-sm">
+                    Premium responses &amp; features for $4.99 one-time • Ads at bottom
+                </div>
+            </div>
+
+            <!-- TIMELINE -->
+            <div>
+                <div class="text-xs uppercase tracking-widest dream-accent font-medium mb-8">DEVELOPMENT PROGRESS</div>
+                <div class="vertical-timeline">
+                    <div class="timeline-step">
+                        <div class="timeline-dot completed">1</div>
+                        <div class="text-zinc-400">Idea</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-dot dream-dot">2</div>
+                        <div class="font-semibold text-white">Development</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-dot bg-zinc-700 text-zinc-400">3</div>
+                        <div class="text-zinc-400">Adding to Store</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-dot bg-zinc-700 text-zinc-400">4</div>
+                        <div class="text-zinc-400">Closed Testing</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-dot bg-zinc-700 text-zinc-400">5</div>
+                        <div class="text-zinc-400">Open Testing</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-dot bg-zinc-700 text-zinc-400">6</div>
+                        <div class="text-zinc-400">Final Release</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMING SOON PLACEHOLDER -->
+        <div class="mt-20">
+            <div class="flex items-center justify-between mb-8">
+                <div class="text-xs uppercase tracking-widest dream-accent font-medium">DREAMMAPPER SCREENSHOTS</div>
+                <div class="px-6 py-2 bg-purple-500/10 text-[#c084fc] text-xs font-medium rounded-3xl">ARRIVING SOON</div>
+            </div>
+            <div class="coming-soon-teaser rounded-3xl p-16 flex flex-col items-center justify-center text-center min-h-[360px]">
+                <div class="text-8xl mb-8">🌙</div>
+                <div class="text-4xl font-semibold text-white mb-3">DreamMapper is almost here</div>
+                <div class="text-purple-300 max-w-xs text-lg">Screenshots, live demo, and beta access arriving shortly.<br>Your name can be in the credits if you join the beta list below.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-zinc-800 text-center text-xs text-zinc-500">
+        <div>Made by Anthony • Tempe, AZ • 2026</div>
+        <div class="mt-2">Hosted on GitHub Pages • Fully mobile responsive</div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+     
+        hamburger.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                hamburger.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            }
+        });
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            });
+        });
+    </script>
+</body>
+</html>
