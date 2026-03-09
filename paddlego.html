@@ -27,6 +27,10 @@
             color: #451a03;
             box-shadow: 0 0 0 6px rgba(251, 146, 60, 0.3);
         }
+        .completed {
+            background: #fb923c;
+            color: white;
+        }
      
         .app-card {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -110,11 +114,31 @@
          
             <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
                 <a href="index.html" class="hover:text-teal-400 transition-colors">Home</a>
-                <a href="rivertracker.html" class="hover:text-teal-400 transition-colors">RiverTracker</a>
-                <a href="paddlego.html" class="text-[#fb923c] font-semibold">Paddle-Go</a>
-                <a href="dreammapper.html" class="hover:text-teal-400 transition-colors">DreamMapper</a>
+
+                <!-- APPS DROPDOWN -->
+                <div class="relative group">
+                    <button class="flex items-center gap-x-1 hover:text-teal-400 transition-colors">
+                        Apps
+                        <i class="fa-solid fa-chevron-down text-xs mt-px transition-transform group-hover:rotate-180"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block pt-4 w-64 z-50">
+                        <div class="bg-zinc-900 rounded-3xl shadow-2xl py-5 border border-zinc-700 overflow-hidden">
+                            <a href="rivertracker.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors">
+                                🏞️ <span class="font-medium">RiverTracker</span>
+                            </a>
+                            <a href="paddlego.html" class="flex items-center gap-4 px-6 py-4 bg-zinc-800 transition-colors">
+                                🛶 <span class="font-medium text-[#fb923c]">Paddle-Go</span>
+                            </a>
+                            <a href="dreammapper.html" class="flex items-center gap-4 px-6 py-4 hover:bg-zinc-800 transition-colors">
+                                🌙 <span class="font-medium">DreamMapper</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="index.html#funding" class="hover:text-teal-400 transition-colors">Funding</a>
                 <a href="index.html#testers" class="hover:text-teal-400 transition-colors">Testers</a>
+                <a href="index.html#privacy" class="hover:text-teal-400 transition-colors">Privacy</a>
             </div>
          
             <a href="index.html#fund"
@@ -125,16 +149,19 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800 mobile-menu">
             <div class="px-6 py-8 flex flex-col gap-y-6 text-sm font-medium">
-                <a href="index.html" class="hover:text-teal-400 py-2">Home</a>
-                <a href="rivertracker.html" class="hover:text-teal-400 py-2">RiverTracker</a>
-                <a href="paddlego.html" class="text-[#fb923c] font-semibold py-2">Paddle-Go</a>
-                <a href="dreammapper.html" class="hover:text-teal-400 py-2">DreamMapper</a>
-                <a href="index.html#funding" class="hover:text-teal-400 py-2">Funding</a>
-                <a href="index.html#testers" class="hover:text-teal-400 py-2">Testers</a>
-                <a href="index.html#fund" class="bg-white text-zinc-900 px-8 py-5 rounded-3xl font-semibold flex items-center justify-center gap-x-2">
+                <a href="index.html" class="hover:text-teal-400 transition-colors py-2">Home</a>
+                <div class="border-t border-zinc-800 pt-6">
+                    <div class="text-teal-400 font-medium mb-4">Apps</div>
+                    <a href="rivertracker.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors">🏞️ RiverTracker</a>
+                    <a href="paddlego.html" class="block py-3 pl-4 text-[#fb923c] font-semibold">🛶 Paddle-Go</a>
+                    <a href="dreammapper.html" class="block py-3 pl-4 hover:text-teal-400 transition-colors">🌙 DreamMapper</a>
+                </div>
+                <a href="index.html#funding" class="hover:text-teal-400 transition-colors py-2">Funding</a>
+                <a href="index.html#testers" class="hover:text-teal-400 transition-colors py-2">Testers</a>
+                <a href="index.html#privacy" class="hover:text-teal-400 transition-colors py-2">Privacy</a>
+                <a href="index.html#fund" class="bg-white text-zinc-900 px-8 py-5 rounded-3xl font-semibold flex items-center justify-center gap-x-2 mt-4">
                     Fund the Launch
                 </a>
             </div>
